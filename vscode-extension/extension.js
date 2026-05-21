@@ -226,70 +226,6 @@ function activate(context) {
         } catch (e) {
           panel.webview.postMessage({ command: 'analysisError', error: String(e) });
         }
-      } else if (message.command === 'analyzeProject') {
-        // ── Project-level analysis ── (shows folder picker)
-        (async () => {
-          try {
-            const repoRoot = path.resolve(context.extensionPath, '..');
-
-            // Ask user to pick a folder to analyze
-            const picked = await vscode.window.showOpenDialog({
-              canSelectFiles: false,
-              canSelectFolders: true,
-              canSelectMany: false,
-              openLabel: 'Analyze This Folder',
-              title: 'Select folder containing C/Python source files to analyze',
-              defaultUri: vscode.Uri.file(repoRoot),
-            });
-
-            if (!picked || picked.length === 0) {
-              // User cancelled
-              return;
-            }
-
-            const targetDir = picked[0].fsPath;
-            const py = findPython(repoRoot);
-            const script = path.join(repoRoot, 'scripts', 'analyze_project.py');
-            const args = [script, '--json', targetDir];
-
-            outputChannel.appendLine(`─── Project Analysis started ───`);
-            outputChannel.appendLine(`  directory : ${targetDir}`);
-
-            panel.webview.postMessage({ command: 'analysisStarted' });
-
-            cp.execFile(py, args, {
-              env: Object.assign({}, process.env),
-              cwd: repoRoot,
-              maxBuffer: 100 * 1024 * 1024,
-              timeout: 300_000   // 5-minute timeout for project analysis
-            }, (err, stdout, stderr) => {
-              if (stderr) { outputChannel.appendLine('[stderr]\n' + stderr); }
-              if (err) {
-                outputChannel.appendLine('[error] ' + String(err));
-                panel.webview.postMessage({
-                  command: 'analysisError',
-                  error: String(err),
-                  stderr: stderr || ''
-                });
-                return;
-              }
-              try {
-                const data = JSON.parse(stdout);
-                outputChannel.appendLine(`[success] files=${(data.per_file||[]).length}`);
-                panel.webview.postMessage({ command: 'projectResult', data });
-              } catch (e) {
-                outputChannel.appendLine('[parse-error] ' + stdout.slice(0, 500));
-                panel.webview.postMessage({
-                  command: 'analysisError',
-                  error: 'Failed to parse project JSON: ' + e.message,
-                  stderr: stderr || ''
-                });
-              }
-            });
-          } catch (e) {
-            panel.webview.postMessage({ command: 'analysisError', error: String(e) });
-          }
-        })();
       } else if (message.command === 'applyFix') {
         // ── Apply a fix to the source file ──
         (async () => {
@@ -440,9 +376,6 @@ function getWebviewContent(scriptUri, styleUri) {
   <div id="toolbar">
     <button id="analyzeBtn" title="Analyze file for concurrency issues (uses LLM for explanations)">
       <span class="icon">▶</span> Analyze Current File
-    </button>
-    <button id="analyzeProjectBtn" title="Run cross-file analysis on the entire project">
-      <span class="icon">📂</span> Analyze Project
     </button>
     <button id="sidebarToggleBtn" class="toolbar-toggle" title="Toggle fixes sidebar" aria-pressed="false">
       <span class="icon">🧰</span> Fixes Panel

@@ -108,15 +108,6 @@
     });
   }
 
-  // ── Analyze Project button ──
-  const analyzeProjectBtn = document.getElementById('analyzeProjectBtn');
-  if (analyzeProjectBtn) {
-    analyzeProjectBtn.addEventListener('click', () => {
-      if (vscode) {
-        vscode.postMessage({ command: 'analyzeProject' });
-      }
-    });
-  }
 
   // ── Message handler ──
   window.addEventListener('message', (event) => {
@@ -134,28 +125,18 @@
         hide(detailPanel);
         analyzeBtn.disabled = true;
         if (deepAnalyzeBtn) deepAnalyzeBtn.disabled = true;
-        if (analyzeProjectBtn) analyzeProjectBtn.disabled = true;
         break;
 
       case 'analysisResult':
         hide(spinnerWrap);
         analyzeBtn.disabled = false;
         if (deepAnalyzeBtn) deepAnalyzeBtn.disabled = false;
-        if (analyzeProjectBtn) analyzeProjectBtn.disabled = false;
         renderResult(msg.data || {});
-        break;
-
-      case 'projectResult':
-        hide(spinnerWrap);
-        analyzeBtn.disabled = false;
-        if (analyzeProjectBtn) analyzeProjectBtn.disabled = false;
-        renderProjectResult(msg.data || {});
         break;
 
       case 'analysisError':
         hide(spinnerWrap);
         analyzeBtn.disabled = false;
-        if (analyzeProjectBtn) analyzeProjectBtn.disabled = false;
         showError(msg.error || 'Unknown error');
         break;
     }
@@ -736,62 +717,6 @@
         }
       });
     }
-  }
-
-  // ── Render project-wide result ──
-  function renderProjectResult(data) {
-    lastData = data;
-    const s = data.summary || {};
-    const cf = (data.knowledge_graph || {}).cross_file || {};
-
-    // Summary bar
-    summaryBar.innerHTML = [
-      tag('Files', s.files_analyzed),
-      tag('Findings', s.total_findings),
-      tag('Merged TIG', `${s.merged_tig_nodes || 0}n/${s.merged_tig_edges || 0}e`),
-      tag('KG', `${s.kg_nodes || 0}n/${s.kg_edges || 0}e`),
-      `<span class="summary-tag ${(cf.high_risk || 0) > 0 ? 'alert' : ''}">${cf.high_risk || 0} High Risk</span>`,
-      `<span class="summary-tag">${cf.total_cross_file_vars || 0} Cross-file Vars</span>`,
-    ].join('');
-    show(summaryBar);
-
-    // Build detail view in the graph area
-    let html = '<div class="project-report">';
-    html += '<h2 style="color:#4fc3f7;margin:0 0 12px">📊 Project Analysis Report</h2>';
-    html += `<p>${s.files_analyzed} files analyzed · ${s.total_findings} findings · ${cf.total_cross_file_vars || 0} cross-file variables</p>`;
-
-    // Per-file table
-    const perFile = data.per_file || [];
-    if (perFile.length > 0) {
-      html += '<h3 style="color:#81c784;margin:16px 0 8px">Per-File Results</h3>';
-      html += '<table class="project-table"><thead><tr><th>File</th><th>Races</th><th>Unprotected</th><th>Total</th></tr></thead><tbody>';
-      for (const f of perFile) {
-        const fname = (f.file || '').replace(/^.*[\\/]/, '');
-        const total = (f.openmp_races || 0) + (f.unprotected_accesses || 0) + (f.data_races || 0);
-        if (total === 0) continue;
-        html += `<tr><td>${escapeHtml(fname)}</td><td>${f.openmp_races || 0}</td><td>${f.unprotected_accesses || 0}</td><td><b>${total}</b></td></tr>`;
-      }
-      html += '</tbody></table>';
-    }
-
-    // Cross-file patterns
-    const patterns = (cf.patterns || []);
-    if (patterns.length > 0) {
-      html += '<h3 style="color:#e57373;margin:16px 0 8px">Cross-File Risk Patterns</h3>';
-      html += '<table class="project-table"><thead><tr><th>Variable</th><th>Files</th><th>Risk</th><th>Protected</th></tr></thead><tbody>';
-      for (const p of patterns.slice(0, 30)) {
-        const riskColor = p.risk === 'high' ? '#e57373' : p.risk === 'medium' ? '#ffb74d' : '#81c784';
-        const files = (p.files || []).map(f => f.replace(/^.*[\\/]/, '')).join(', ');
-        html += `<tr><td><b>${escapeHtml(p.variable)}</b></td><td style="font-size:11px">${escapeHtml(files)}</td>`;
-        html += `<td style="color:${riskColor};font-weight:700">${p.risk.toUpperCase()}</td>`;
-        html += `<td>${p.is_protected ? '✅' : '❌'}</td></tr>`;
-      }
-      html += '</tbody></table>';
-    }
-
-    html += '</div>';
-    graphDiv.innerHTML = html;
-    hide(detailPanel);
   }
 
 })();
