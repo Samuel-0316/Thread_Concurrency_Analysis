@@ -27,7 +27,7 @@
 7. [Technology Stack](#7-technology-stack)
 8. [Configuration & Environment Variables](#8-configuration--environment-variables)
 9. [Test & Script Inventory](#9-test--script-inventory)
-10. [Benchmarks & Results Artefacts](#10-benchmarks--results-artefacts)
+10. [Benchmarks & Results Artifacts](#10-benchmarks--results-artifacts)
 
 ---
 
@@ -918,7 +918,7 @@ The VS Code extension reads a `.env` file from the workspace root and injects th
 
 ---
 
-## 10. Benchmarks & Results Artefacts
+## 10. Benchmarks & Results Artifacts
 
 All results are stored in `results/`:
 
