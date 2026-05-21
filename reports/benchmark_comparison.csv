@@ -1,0 +1,5 @@
+report,mtime,runtime_seconds,files_analyzed,expected_races,total_races_found,detection_rate_pct,llm_findings,schema_pass_rate
+dataracebench_full_results.json,2026-05-11T06:48:46.762638,,,,,,,
+dataracebench_full_results_final.json,2026-05-14T04:46:19.891455,,,,,,,
+dataracebench_full_results_ir.json,2026-05-11T20:42:19.702412,,,,,,,
+dataracebench_full_results_v2.json,2026-05-11T21:01:07.317279,,,,,,,

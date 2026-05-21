@@ -1,0 +1,79 @@
+{
+  "total_files": 204,
+  "files_processed": 204,
+  "files_failed": 0,
+  "total_findings": 408,
+  "total_accesses": 70969,
+  "total_sync_points": 110,
+  "total_accesses_with_sync": 523,
+  "total_reduction_accesses": 48,
+  "total_atomic_accesses": 0,
+  "sync_construct_coverage": {
+    "reduction": 17,
+    "critical": 31,
+    "barrier": 18,
+    "atomic": 11
+  },
+  "files_by_construct": {
+    "reduction": [
+      "DRB058-jacobikernel-orig-no.c",
+      "DRB062-matrixvector2-orig-no.c",
+      "DRB065-pireduction-orig-no.c",
+      "DRB074-flush-orig-yes.c",
+      "DRB076-flush-orig-no.c",
+      "DRB097-target-teams-distribute-orig-no.c",
+      "DRB121-reduction-orig-no.c",
+      "DRB140-reduction-barrier-orig-yes.c",
+      "DRB141-reduction-barrier-orig-no.c",
+      "DRB145-atomiccritical-orig-gpu-no.c",
+      "DRB154-missinglock3-orig-gpu-no.c",
+      "DRB162-nolocksimd-orig-gpu-no.c",
+      "DRB163-simdmissinglock1-orig-gpu-no.c"
+    ],
+    "critical": [
+      "DRB074-flush-orig-yes.c",
+      "DRB084-threadprivatemissing-orig-yes.c",
+      "DRB085-threadprivate-orig-no.c",
+      "DRB091-threadprivate2-orig-no.c",
+      "DRB092-threadprivatemissing2-orig-yes.c",
+      "DRB139-worksharingcritical-orig-no.c",
+      "DRB142-acquirerelease-orig-yes.c",
+      "DRB143-acquirerelease-orig-no.c",
+      "DRB144-critical-missingreduction-orig-gpu-yes.c",
+      "DRB148-critical1-orig-gpu-yes.c",
+      "DRB172-critical2-orig-no.c",
+      "DRB181-SmithWaterman-yes.c",
+      "DRB184-barrier1-no.c",
+      "DRB185-barrier1-yes.c",
+      "DRB190-critical-section2-no.c",
+      "DRB191-critical-section2-yes.c",
+      "DRB192-critical-section3-no.c",
+      "DRB193-critical-section3-yes.c",
+      "DRB198-prodcons-no.c",
+      "DRB199-prodcons-yes.c"
+    ],
+    "barrier": [
+      "DRB104-nowait-barrier-orig-no.c",
+      "DRB120-barrier-orig-no.c",
+      "DRB141-reduction-barrier-orig-no.c",
+      "DRB172-critical2-orig-no.c",
+      "DRB184-barrier1-no.c",
+      "DRB185-barrier1-yes.c",
+      "DRB186-barrier2-no.c",
+      "DRB187-barrier2-yes.c",
+      "DRB188-barrier3-no.c",
+      "DRB189-barrier3-yes.c",
+      "DRB200-sync1-no.c",
+      "DRB201-sync1-yes.c"
+    ],
+    "atomic": [
+      "DRB108-atomic-orig-no.c",
+      "DRB142-acquirerelease-orig-yes.c",
+      "DRB143-acquirerelease-orig-no.c",
+      "DRB146-atomicupdate-orig-gpu-no.c",
+      "DRB147-critical1-orig-gpu-no.c",
+      "DRB182-atomic3-no.c",
+      "DRB183-atomic3-yes.c"
+    ]
+  }
+}

@@ -1,0 +1,802 @@
+{
+  "model": "gemini-2.5-flash",
+  "llm_enabled": true,
+  "analysis_mode": "parser_heuristic_v2",
+  "metrics": {
+    "total_files": 206,
+    "with_ground_truth": 204,
+    "expected_races": 102,
+    "expected_no_races": 102,
+    "detection_rate": 56.86274509803921,
+    "total_races_found": 169,
+    "files_with_races": 106,
+    "llm_findings": 152,
+    "schema_pass_rate": 3.289473684210526
+  },
+  "sample": [
+    {
+      "file_path": "datasets/dataracebench/micro-benchmarks\\DRB001-antidep1-orig-yes.c",
+      "ground_truth": true,
+      "static_found_races": 1,
+      "llm_analyses": [
+        {
+          "variable": "a",
+          "is_real_race": false,
+          "severity": "low",
+          "confidence": 20.0,
+          "schema_ok": true,
+          "heuristic_confidence": 0.9,
+          "heuristic_notes": []
+        }
+      ],
+      "errors": []
+    },
+    {
+      "file_path": "datasets/dataracebench/micro-benchmarks\\DRB002-antidep1-var-yes.c",
+      "ground_truth": true,
+      "static_found_races": 1,
+      "llm_analyses": [
+        {
+          "variable": "a",
+          "is_real_race": null,
+          "severity": "unknown",
+          "confidence": null,
+          "schema_ok": false,
+          "heuristic_confidence": 0.9,
+          "heuristic_notes": []
+        }
+      ],
+      "errors": []
+    },
+    {
+      "file_path": "datasets/dataracebench/micro-benchmarks\\DRB003-antidep2-orig-yes.c",
+      "ground_truth": true,
+      "static_found_races": 0,
+      "llm_analyses": [],
+      "errors": []
+    },
+    {
+      "file_path": "datasets/dataracebench/micro-benchmarks\\DRB004-antidep2-var-yes.c",
+      "ground_truth": true,
+      "static_found_races": 0,
+      "llm_analyses": [],
+      "errors": []
+    },
+    {
+      "file_path": "datasets/dataracebench/micro-benchmarks\\DRB005-indirectaccess1-orig-yes.c",
+      "ground_truth": true,
+      "static_found_races": 0,
+      "llm_analyses": [],
+      "errors": []
+    },
+    {
+      "file_path": "datasets/dataracebench/micro-benchmarks\\DRB006-indirectaccess2-orig-yes.c",
+      "ground_truth": true,
+      "static_found_races": 0,
+      "llm_analyses": [],
+      "errors": []
+    },
+    {
+      "file_path": "datasets/dataracebench/micro-benchmarks\\DRB007-indirectaccess3-orig-yes.c",
+      "ground_truth": true,
+      "static_found_races": 0,
+      "llm_analyses": [],
+      "errors": []
+    },
+    {
+      "file_path": "datasets/dataracebench/micro-benchmarks\\DRB008-indirectaccess4-orig-yes.c",
+      "ground_truth": true,
+      "static_found_races": 0,
+      "llm_analyses": [],
+      "errors": []
+    },
+    {
+      "file_path": "datasets/dataracebench/micro-benchmarks\\DRB009-lastprivatemissing-orig-yes.c",
+      "ground_truth": true,
+      "static_found_races": 0,
+      "llm_analyses": [],
+      "errors": []
+    },
+    {
+      "file_path": "datasets/dataracebench/micro-benchmarks\\DRB010-lastprivatemissing-var-yes.c",
+      "ground_truth": true,
+      "static_found_races": 0,
+      "llm_analyses": [],
+      "errors": []
+    },
+    {
+      "file_path": "datasets/dataracebench/micro-benchmarks\\DRB011-minusminus-orig-yes.c",
+      "ground_truth": true,
+      "static_found_races": 2,
+      "llm_analyses": [
+        {
+          "variable": "numNodes",
+          "is_real_race": null,
+          "severity": "unknown",
+          "confidence": null,
+          "schema_ok": false,
+          "heuristic_confidence": 0.9,
+          "heuristic_notes": []
+        },
+        {
+          "variable": "x",
+          "is_real_race": null,
+          "severity": "unknown",
+          "confidence": null,
+          "schema_ok": false,
+          "heuristic_confidence": 0.9,
+          "heuristic_notes": []
+        }
+      ],
+      "errors": []
+    },
+    {
+      "file_path": "datasets/dataracebench/micro-benchmarks\\DRB012-minusminus-var-yes.c",
+      "ground_truth": true,
+      "static_found_races": 2,
+      "llm_analyses": [
+        {
+          "variable": "numNodes",
+          "is_real_race": null,
+          "severity": "unknown",
+          "confidence": null,
+          "schema_ok": false,
+          "heuristic_confidence": 0.9,
+          "heuristic_notes": []
+        },
+        {
+          "variable": "x",
+          "is_real_race": null,
+          "severity": "unknown",
+          "confidence": null,
+          "schema_ok": false,
+          "heuristic_confidence": 0.9,
+          "heuristic_notes": []
+        }
+      ],
+      "errors": []
+    },
+    {
+      "file_path": "datasets/dataracebench/micro-benchmarks\\DRB013-nowait-orig-yes.c",
+      "ground_truth": true,
+      "static_found_races": 2,
+      "llm_analyses": [
+        {
+          "variable": "a",
+          "is_real_race": null,
+          "severity": "unknown",
+          "confidence": null,
+          "schema_ok": false,
+          "heuristic_confidence": 0.9,
+          "heuristic_notes": []
+        },
+        {
+          "variable": "b",
+          "is_real_race": null,
+          "severity": "unknown",
+          "confidence": null,
+          "schema_ok": false,
+          "heuristic_confidence": 0.9,
+          "heuristic_notes": []
+        }
+      ],
+      "errors": []
+    },
+    {
+      "file_path": "datasets/dataracebench/micro-benchmarks\\DRB014-outofbounds-orig-yes.c",
+      "ground_truth": true,
+      "static_found_races": 0,
+      "llm_analyses": [],
+      "errors": []
+    },
+    {
+      "file_path": "datasets/dataracebench/micro-benchmarks\\DRB015-outofbounds-var-yes.c",
+      "ground_truth": true,
+      "static_found_races": 0,
+      "llm_analyses": [],
+      "errors": []
+    },
+    {
+      "file_path": "datasets/dataracebench/micro-benchmarks\\DRB016-outputdep-orig-yes.c",
+      "ground_truth": true,
+      "static_found_races": 1,
+      "llm_analyses": [
+        {
+          "variable": "a",
+          "is_real_race": null,
+          "severity": "unknown",
+          "confidence": null,
+          "schema_ok": false,
+          "heuristic_confidence": 0.9,
+          "heuristic_notes": []
+        }
+      ],
+      "errors": []
+    },
+    {
+      "file_path": "datasets/dataracebench/micro-benchmarks\\DRB017-outputdep-var-yes.c",
+      "ground_truth": true,
+      "static_found_races": 1,
+      "llm_analyses": [
+        {
+          "variable": "a",
+          "is_real_race": null,
+          "severity": "unknown",
+          "confidence": null,
+          "schema_ok": false,
+          "heuristic_confidence": 0.9,
+          "heuristic_notes": []
+        }
+      ],
+      "errors": []
+    },
+    {
+      "file_path": "datasets/dataracebench/micro-benchmarks\\DRB018-plusplus-orig-yes.c",
+      "ground_truth": true,
+      "static_found_races": 4,
+      "llm_analyses": [
+        {
+          "variable": "inLen",
+          "is_real_race": null,
+          "severity": "unknown",
+          "confidence": null,
+          "schema_ok": false,
+          "heuristic_confidence": 0.9,
+          "heuristic_notes": []
+        },
+        {
+          "variable": "input",
+          "is_real_race": null,
+          "severity": "unknown",
+          "confidence": null,
+          "schema_ok": false,
+          "heuristic_confidence": 0.9,
+          "heuristic_notes": []
+        },
+        {
+          "variable": "outLen",
+          "is_real_race": null,
+          "severity": "unknown",
+          "confidence": null,
+          "schema_ok": false,
+          "heuristic_confidence": 0.9,
+          "heuristic_notes": []
+        }
+      ],
+      "errors": []
+    },
+    {
+      "file_path": "datasets/dataracebench/micro-benchmarks\\DRB019-plusplus-var-yes.c",
+      "ground_truth": true,
+      "static_found_races": 4,
+      "llm_analyses": [
+        {
+          "variable": "inLen",
+          "is_real_race": null,
+          "severity": "unknown",
+          "confidence": null,
+          "schema_ok": false,
+          "heuristic_confidence": 0.9,
+          "heuristic_notes": []
+        },
+        {
+          "variable": "input",
+          "is_real_race": null,
+          "severity": "unknown",
+          "confidence": null,
+          "schema_ok": false,
+          "heuristic_confidence": 0.9,
+          "heuristic_notes": []
+        },
+        {
+          "variable": "outLen",
+          "is_real_race": null,
+          "severity": "unknown",
+          "confidence": null,
+          "schema_ok": false,
+          "heuristic_confidence": 0.9,
+          "heuristic_notes": []
+        }
+      ],
+      "errors": []
+    },
+    {
+      "file_path": "datasets/dataracebench/micro-benchmarks\\DRB020-privatemissing-var-yes.c",
+      "ground_truth": true,
+      "static_found_races": 1,
+      "llm_analyses": [
+        {
+          "variable": "a",
+          "is_real_race": null,
+          "severity": "unknown",
+          "confidence": null,
+          "schema_ok": false,
+          "heuristic_confidence": 0.9,
+          "heuristic_notes": []
+        }
+      ],
+      "errors": []
+    },
+    {
+      "file_path": "datasets/dataracebench/micro-benchmarks\\DRB021-reductionmissing-orig-yes.c",
+      "ground_truth": true,
+      "static_found_races": 0,
+      "llm_analyses": [],
+      "errors": []
+    },
+    {
+      "file_path": "datasets/dataracebench/micro-benchmarks\\DRB022-reductionmissing-var-yes.c",
+      "ground_truth": true,
+      "static_found_races": 0,
+      "llm_analyses": [],
+      "errors": []
+    },
+    {
+      "file_path": "datasets/dataracebench/micro-benchmarks\\DRB023-sections1-orig-yes.c",
+      "ground_truth": true,
+      "static_found_races": 0,
+      "llm_analyses": [],
+      "errors": []
+    },
+    {
+      "file_path": "datasets/dataracebench/micro-benchmarks\\DRB024-simdtruedep-orig-yes.c",
+      "ground_truth": true,
+      "static_found_races": 0,
+      "llm_analyses": [],
+      "errors": []
+    },
+    {
+      "file_path": "datasets/dataracebench/micro-benchmarks\\DRB025-simdtruedep-var-yes.c",
+      "ground_truth": true,
+      "static_found_races": 0,
+      "llm_analyses": [],
+      "errors": []
+    },
+    {
+      "file_path": "datasets/dataracebench/micro-benchmarks\\DRB026-targetparallelfor-orig-yes.c",
+      "ground_truth": true,
+      "static_found_races": 1,
+      "llm_analyses": [
+        {
+          "variable": "a",
+          "is_real_race": null,
+          "severity": "unknown",
+          "confidence": null,
+          "schema_ok": false,
+          "heuristic_confidence": 0.9,
+          "heuristic_notes": []
+        }
+      ],
+      "errors": []
+    },
+    {
+      "file_path": "datasets/dataracebench/micro-benchmarks\\DRB027-taskdependmissing-orig-yes.c",
+      "ground_truth": true,
+      "static_found_races": 0,
+      "llm_analyses": [],
+      "errors": []
+    },
+    {
+      "file_path": "datasets/dataracebench/micro-benchmarks\\DRB028-privatemissing-orig-yes.c",
+      "ground_truth": true,
+      "static_found_races": 1,
+      "llm_analyses": [
+        {
+          "variable": "a",
+          "is_real_race": null,
+          "severity": "unknown",
+          "confidence": null,
+          "schema_ok": false,
+          "heuristic_confidence": 0.9,
+          "heuristic_notes": []
+        }
+      ],
+      "errors": []
+    },
+    {
+      "file_path": "datasets/dataracebench/micro-benchmarks\\DRB029-truedep1-orig-yes.c",
+      "ground_truth": true,
+      "static_found_races": 1,
+      "llm_analyses": [
+        {
+          "variable": "a",
+          "is_real_race": null,
+          "severity": "unknown",
+          "confidence": null,
+          "schema_ok": false,
+          "heuristic_confidence": 0.9,
+          "heuristic_notes": []
+        }
+      ],
+      "errors": []
+    },
+    {
+      "file_path": "datasets/dataracebench/micro-benchmarks\\DRB030-truedep1-var-yes.c",
+      "ground_truth": true,
+      "static_found_races": 1,
+      "llm_analyses": [
+        {
+          "variable": "a",
+          "is_real_race": null,
+          "severity": "unknown",
+          "confidence": null,
+          "schema_ok": false,
+          "heuristic_confidence": 0.9,
+          "heuristic_notes": []
+        }
+      ],
+      "errors": []
+    },
+    {
+      "file_path": "datasets/dataracebench/micro-benchmarks\\DRB031-truedepfirstdimension-orig-yes.c",
+      "ground_truth": true,
+      "static_found_races": 0,
+      "llm_analyses": [],
+      "errors": []
+    },
+    {
+      "file_path": "datasets/dataracebench/micro-benchmarks\\DRB032-truedepfirstdimension-var-yes.c",
+      "ground_truth": true,
+      "static_found_races": 0,
+      "llm_analyses": [],
+      "errors": []
+    },
+    {
+      "file_path": "datasets/dataracebench/micro-benchmarks\\DRB033-truedeplinear-orig-yes.c",
+      "ground_truth": true,
+      "static_found_races": 1,
+      "llm_analyses": [
+        {
+          "variable": "a",
+          "is_real_race": null,
+          "severity": "unknown",
+          "confidence": null,
+          "schema_ok": false,
+          "heuristic_confidence": 0.9,
+          "heuristic_notes": []
+        }
+      ],
+      "errors": []
+    },
+    {
+      "file_path": "datasets/dataracebench/micro-benchmarks\\DRB034-truedeplinear-var-yes.c",
+      "ground_truth": true,
+      "static_found_races": 1,
+      "llm_analyses": [
+        {
+          "variable": "a",
+          "is_real_race": null,
+          "severity": "unknown",
+          "confidence": null,
+          "schema_ok": false,
+          "heuristic_confidence": 0.9,
+          "heuristic_notes": []
+        }
+      ],
+      "errors": []
+    },
+    {
+      "file_path": "datasets/dataracebench/micro-benchmarks\\DRB035-truedepscalar-orig-yes.c",
+      "ground_truth": true,
+      "static_found_races": 1,
+      "llm_analyses": [
+        {
+          "variable": "a",
+          "is_real_race": null,
+          "severity": "unknown",
+          "confidence": null,
+          "schema_ok": false,
+          "heuristic_confidence": 0.9,
+          "heuristic_notes": []
+        }
+      ],
+      "errors": []
+    },
+    {
+      "file_path": "datasets/dataracebench/micro-benchmarks\\DRB036-truedepscalar-var-yes.c",
+      "ground_truth": true,
+      "static_found_races": 1,
+      "llm_analyses": [
+        {
+          "variable": "a",
+          "is_real_race": false,
+          "severity": "low",
+          "confidence": 30.0,
+          "schema_ok": true,
+          "heuristic_confidence": 0.9,
+          "heuristic_notes": []
+        }
+      ],
+      "errors": []
+    },
+    {
+      "file_path": "datasets/dataracebench/micro-benchmarks\\DRB037-truedepseconddimension-orig-yes.c",
+      "ground_truth": true,
+      "static_found_races": 0,
+      "llm_analyses": [],
+      "errors": []
+    },
+    {
+      "file_path": "datasets/dataracebench/micro-benchmarks\\DRB038-truedepseconddimension-var-yes.c",
+      "ground_truth": true,
+      "static_found_races": 0,
+      "llm_analyses": [],
+      "errors": []
+    },
+    {
+      "file_path": "datasets/dataracebench/micro-benchmarks\\DRB039-truedepsingleelement-orig-yes.c",
+      "ground_truth": true,
+      "static_found_races": 1,
+      "llm_analyses": [
+        {
+          "variable": "a",
+          "is_real_race": null,
+          "severity": "unknown",
+          "confidence": null,
+          "schema_ok": false,
+          "heuristic_confidence": 0.9,
+          "heuristic_notes": []
+        }
+      ],
+      "errors": []
+    },
+    {
+      "file_path": "datasets/dataracebench/micro-benchmarks\\DRB040-truedepsingleelement-var-yes.c",
+      "ground_truth": true,
+      "static_found_races": 1,
+      "llm_analyses": [
+        {
+          "variable": "a",
+          "is_real_race": null,
+          "severity": "unknown",
+          "confidence": null,
+          "schema_ok": false,
+          "heuristic_confidence": 0.9,
+          "heuristic_notes": []
+        }
+      ],
+      "errors": []
+    },
+    {
+      "file_path": "datasets/dataracebench/micro-benchmarks\\DRB041-3mm-parallel-no.c",
+      "ground_truth": false,
+      "static_found_races": 6,
+      "llm_analyses": [
+        {
+          "variable": "c1",
+          "is_real_race": null,
+          "severity": "unknown",
+          "confidence": null,
+          "schema_ok": false,
+          "heuristic_confidence": 0.9,
+          "heuristic_notes": []
+        },
+        {
+          "variable": "ni",
+          "is_real_race": null,
+          "severity": "unknown",
+          "confidence": null,
+          "schema_ok": false,
+          "heuristic_confidence": 0.9,
+          "heuristic_notes": []
+        },
+        {
+          "variable": "nj",
+          "is_real_race": null,
+          "severity": "unknown",
+          "confidence": null,
+          "schema_ok": false,
+          "heuristic_confidence": 0.9,
+          "heuristic_notes": []
+        }
+      ],
+      "errors": []
+    },
+    {
+      "file_path": "datasets/dataracebench/micro-benchmarks\\DRB042-3mm-tile-no.c",
+      "ground_truth": false,
+      "static_found_races": 6,
+      "llm_analyses": [
+        {
+          "variable": "c1",
+          "is_real_race": null,
+          "severity": "unknown",
+          "confidence": null,
+          "schema_ok": false,
+          "heuristic_confidence": 0.9,
+          "heuristic_notes": []
+        },
+        {
+          "variable": "ni",
+          "is_real_race": null,
+          "severity": "unknown",
+          "confidence": null,
+          "schema_ok": false,
+          "heuristic_confidence": 0.9,
+          "heuristic_notes": []
+        },
+        {
+          "variable": "nj",
+          "is_real_race": null,
+          "severity": "unknown",
+          "confidence": null,
+          "schema_ok": false,
+          "heuristic_confidence": 0.9,
+          "heuristic_notes": []
+        }
+      ],
+      "errors": []
+    },
+    {
+      "file_path": "datasets/dataracebench/micro-benchmarks\\DRB043-adi-parallel-no.c",
+      "ground_truth": false,
+      "static_found_races": 3,
+      "llm_analyses": [
+        {
+          "variable": "c0",
+          "is_real_race": null,
+          "severity": "unknown",
+          "confidence": null,
+          "schema_ok": false,
+          "heuristic_confidence": 0.9,
+          "heuristic_notes": []
+        },
+        {
+          "variable": "c1",
+          "is_real_race": null,
+          "severity": "unknown",
+          "confidence": null,
+          "schema_ok": false,
+          "heuristic_confidence": 0.9,
+          "heuristic_notes": []
+        },
+        {
+          "variable": "tsteps",
+          "is_real_race": null,
+          "severity": "unknown",
+          "confidence": null,
+          "schema_ok": false,
+          "heuristic_confidence": 0.9,
+          "heuristic_notes": []
+        }
+      ],
+      "errors": []
+    },
+    {
+      "file_path": "datasets/dataracebench/micro-benchmarks\\DRB044-adi-tile-no.c",
+      "ground_truth": false,
+      "static_found_races": 3,
+      "llm_analyses": [
+        {
+          "variable": "c0",
+          "is_real_race": null,
+          "severity": "unknown",
+          "confidence": null,
+          "schema_ok": false,
+          "heuristic_confidence": 0.9,
+          "heuristic_notes": []
+        },
+        {
+          "variable": "c1",
+          "is_real_race": null,
+          "severity": "unknown",
+          "confidence": null,
+          "schema_ok": false,
+          "heuristic_confidence": 0.9,
+          "heuristic_notes": []
+        },
+        {
+          "variable": "tsteps",
+          "is_real_race": null,
+          "severity": "unknown",
+          "confidence": null,
+          "schema_ok": false,
+          "heuristic_confidence": 0.9,
+          "heuristic_notes": []
+        }
+      ],
+      "errors": []
+    },
+    {
+      "file_path": "datasets/dataracebench/micro-benchmarks\\DRB045-doall1-orig-no.c",
+      "ground_truth": false,
+      "static_found_races": 1,
+      "llm_analyses": [
+        {
+          "variable": "a",
+          "is_real_race": null,
+          "severity": "unknown",
+          "confidence": null,
+          "schema_ok": false,
+          "heuristic_confidence": 0.9,
+          "heuristic_notes": []
+        }
+      ],
+      "errors": []
+    },
+    {
+      "file_path": "datasets/dataracebench/micro-benchmarks\\DRB046-doall2-orig-no.c",
+      "ground_truth": false,
+      "static_found_races": 0,
+      "llm_analyses": [],
+      "errors": []
+    },
+    {
+      "file_path": "datasets/dataracebench/micro-benchmarks\\DRB047-doallchar-orig-no.c",
+      "ground_truth": false,
+      "static_found_races": 1,
+      "llm_analyses": [
+        {
+          "variable": "a",
+          "is_real_race": null,
+          "severity": "unknown",
+          "confidence": null,
+          "schema_ok": false,
+          "heuristic_confidence": 0.9,
+          "heuristic_notes": []
+        }
+      ],
+      "errors": []
+    },
+    {
+      "file_path": "datasets/dataracebench/micro-benchmarks\\DRB048-firstprivate-orig-no.c",
+      "ground_truth": false,
+      "static_found_races": 1,
+      "llm_analyses": [
+        {
+          "variable": "a",
+          "is_real_race": null,
+          "severity": "unknown",
+          "confidence": null,
+          "schema_ok": false,
+          "heuristic_confidence": 0.9,
+          "heuristic_notes": []
+        }
+      ],
+      "errors": []
+    },
+    {
+      "file_path": "datasets/dataracebench/micro-benchmarks\\DRB049-fprintf-orig-no.c",
+      "ground_truth": false,
+      "static_found_races": 1,
+      "llm_analyses": [
+        {
+          "variable": "ret",
+          "is_real_race": null,
+          "severity": "unknown",
+          "confidence": null,
+          "schema_ok": false,
+          "heuristic_confidence": 0.9,
+          "heuristic_notes": []
+        }
+      ],
+      "errors": []
+    },
+    {
+      "file_path": "datasets/dataracebench/micro-benchmarks\\DRB050-functionparameter-orig-no.c",
+      "ground_truth": false,
+      "static_found_races": 2,
+      "llm_analyses": [
+        {
+          "variable": "o1",
+          "is_real_race": null,
+          "severity": "unknown",
+          "confidence": null,
+          "schema_ok": false,
+          "heuristic_confidence": 0.9,
+          "heuristic_notes": []
+        },
+        {
+          "variable": "volnew_o8",
+          "is_real_race": null,
+          "severity": "unknown",
+          "confidence": null,
+          "schema_ok": false,
+          "heuristic_confidence": 0.9,
+          "heuristic_notes": []
+        }
+      ],
+      "errors": []
+    }
+  ]
+}

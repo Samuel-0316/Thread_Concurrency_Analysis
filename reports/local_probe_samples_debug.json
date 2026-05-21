@@ -1,0 +1,154 @@
+[
+  {
+    "file": "datasets/dataracebench/micro-benchmarks\\DRB001-antidep1-orig-yes.c",
+    "variable": "a",
+    "raw_llm_response": "{\n  \"severity\": \"high\",\n  \"is_real_race\": true,\n  \"explanation\": \"The static analyzer flags variable 'a' because it is accessed (read and/or written) by multiple OpenMP threads without any explicit synchronization construct (e.g., atomic, critical, or barrier). In the DRB001‑antidep1 benchmark the code typically contains two parallel regions that both read and write 'a', creating a classic read‑write or write‑write race.\",\n  \"impact\": \"At runtime the race can cause lost updates, torn reads, or inconsistent final values of 'a'. The program may produce non‑deterministic results, silently corrupt data, or, in extreme cases, trigger undefined behavior that could crash the application.\",\n  \"reproduction\": \"Compile the program with an OpenMP‑enabled compiler (e.g., gcc -fopenmp) and run it repeatedly with a high number of threads (e.g., OMP_NUM_THREADS=8). Observe that the final value of 'a' varies between runs and sometimes differs from the expected sequential result. Adding printf statements inside the parallel regions will show interleaved reads/writes.\",\n  \"recommendations\": \"Introduce proper synchronization around accesses to 'a':\\n- Use an atomic directive if the operation is a simple read‑modify‑write (e.g., #pragma omp atomic update).\\n- Enclose the critical section in a #pragma omp critical block if more complex logic is involved.\\n- Alternatively, restructure the code to give each thread its own private copy of 'a' and combine results after the parallel region (reduction clause).\",\n  \"confidence_pct\": 85\n}",
+    "normalized_output": {
+      "severity": "high",
+      "is_real_race": true,
+      "confidence": 85.0,
+      "root_cause": "The static analyzer flags variable 'a' because it is accessed (read and/or written) by multiple OpenMP threads without any explicit synchronization construct (e.g., atomic, critical, or barrier). In the DRB001‑antidep1 benchmark the code typically contains two parallel regions that both read and write 'a', creating a classic read‑write or write‑write race.",
+      "runtime_impact": "",
+      "recommended_fix": "Introduce proper synchronization around accesses to 'a':\n- Use an atomic directive if the operation is a simple read‑modify‑write (e.g., #pragma omp atomic update).\n- Enclose the critical section in a #pragma omp critical block if more complex logic is involved.\n- Alternatively, restructure the code to give each thread its own private copy of 'a' and combine results after the parallel region (reduction clause)."
+    },
+    "validation_result": {
+      "schema_ok": true,
+      "schema_errors": [],
+      "fact_ok": null,
+      "fact_errors": []
+    }
+  },
+  {
+    "file": "datasets/dataracebench/micro-benchmarks\\DRB002-antidep1-var-yes.c",
+    "variable": "a",
+    "raw_llm_response": "{\n  \"severity\": \"high\",\n  \"is_real_race\": true,\n  \"explanation\": \"The static analyzer identified variable 'a' as being accessed in an OpenMP parallel region without explicit synchronization. In the DRB002‑antidep1‑var‑yes benchmark the code contains a write to 'a' in one thread and a subsequent read of the same variable in another thread (or a later iteration) without a barrier, atomic, or critical construct. This satisfies the classic read‑write race condition definition.\",\n  \"impact\": \"At runtime the racing accesses can cause lost updates, stale data reads, or inconsistent program state. The final value of 'a' becomes nondeterministic, leading to incorrect benchmark results or, in production code, subtle bugs that are hard to reproduce.\",\n  \"reproduction\": \"Compile the program with an OpenMP‑enabled compiler (e.g., gcc -fopenmp) and run it repeatedly on a multi‑core machine. Occasionally the output will reflect an older value of 'a' because a reader thread executes before the writer thread completes its assignment. Adding timing delays (e.g., nanosleep) can increase the likelihood of observing the race.\",\n  \"recommendations\": \"1. Protect the shared variable with an atomic construct:\\n   #pragma omp atomic write\\n   a = new_value;\\n   #pragma omp atomic read\\n   tmp = a;\\n2. Or enclose the accesses in a critical section:\\n   #pragma omp critical\\n   { a = new_value; }\\n3. If the access pattern allows, use OpenMP depend clauses to express the anti‑dependence and let the runtime enforce ordering.\\n4. Alternatively, privatize 'a' per thread and merge results after a barrier.\",\n  \"confidence_pct\": 85\n}",
+    "normalized_output": {
+      "severity": "high",
+      "is_real_race": true,
+      "confidence": 85.0,
+      "root_cause": "The static analyzer identified variable 'a' as being accessed in an OpenMP parallel region without explicit synchronization. In the DRB002‑antidep1‑var‑yes benchmark the code contains a write to 'a' in one thread and a subsequent read of the same variable in another thread (or a later iteration) without a barrier, atomic, or critical construct. This satisfies the classic read‑write race condition definition.",
+      "runtime_impact": "",
+      "recommended_fix": "1. Protect the shared variable with an atomic construct:\n   #pragma omp atomic write\n   a = new_value;\n   #pragma omp atomic read\n   tmp = a;\n2. Or enclose the accesses in a critical section:\n   #pragma omp critical\n   { a = new_value; }\n3. If the access pattern allows, use OpenMP depend clauses to express the anti‑dependence and let the runtime enforce ordering.\n4. Alternatively, privatize 'a' per thread and merge results after a barrier."
+    },
+    "validation_result": {
+      "schema_ok": true,
+      "schema_errors": [],
+      "fact_ok": null,
+      "fact_errors": []
+    }
+  },
+  {
+    "file": "datasets/dataracebench/micro-benchmarks\\DRB011-minusminus-orig-yes.c",
+    "variable": "numNodes",
+    "raw_llm_response": "{\n  \"severity\": \"high\",\n  \"is_real_race\": true,\n  \"explanation\": \"The variable `numNodes` is shared among OpenMP threads and is modified by a non‑atomic decrement (`--numNodes` or `numNodes--`).  No synchronization construct (critical section, atomic, or reduction) protects the read‑modify‑write sequence, so concurrent threads can interleave their accesses, producing a classic data race.\",\n  \"impact\": \"Lost updates can cause `numNodes` to retain a larger value than expected, become negative, or lead to incorrect control‑flow decisions (e.g., premature loop termination or missed work).  In safety‑critical or performance‑sensitive code this may cause silent corruption, crashes, or incorrect benchmark results.\",\n  \"reproduction\": \"Compile the program with OpenMP support and run with >1 thread (e.g., `OMP_NUM_THREADS=4 ./DRB011-minusminus-orig-yes`).  The final value of `numNodes` will vary across runs and often be greater than the sequentially expected value because multiple threads decrement the variable simultaneously, losing some decrements.\",\n  \"recommendations\": \"1. Use an atomic operation: `#pragma omp atomic update` before the decrement.\\\\n2. Wrap the decrement in a critical section: `#pragma omp critical { --numNodes; }`.\\\\n3. If the variable is only used to count work, replace it with a reduction clause: `reduction(-:numNodes)` on the parallel region.\\\\n4. Alternatively, make the variable private to each thread and combine results after the parallel region.\",\n  \"confidence_pct\": 92\n}",
+    "normalized_output": {
+      "severity": "high",
+      "is_real_race": true,
+      "confidence": 92.0,
+      "root_cause": "The variable `numNodes` is shared among OpenMP threads and is modified by a non‑atomic decrement (`--numNodes` or `numNodes--`).  No synchronization construct (critical section, atomic, or reduction) protects the read‑modify‑write sequence, so concurrent threads can interleave their accesses, producing a classic data race.",
+      "runtime_impact": "",
+      "recommended_fix": "1. Use an atomic operation: `#pragma omp atomic update` before the decrement.\\n2. Wrap the decrement in a critical section: `#pragma omp critical { --numNodes; }`.\\n3. If the variable is only used to count work, replace it with a reduction clause: `reduction(-:numNodes)` on the parallel region.\\n4. Alternatively, make the variable private to each thread and combine results after the parallel region."
+    },
+    "validation_result": {
+      "schema_ok": true,
+      "schema_errors": [],
+      "fact_ok": null,
+      "fact_errors": []
+    }
+  },
+  {
+    "file": "datasets/dataracebench/micro-benchmarks\\DRB012-minusminus-var-yes.c",
+    "variable": "numNodes",
+    "raw_llm_response": "{\n  \"severity\": \"high\",\n  \"is_real_race\": true,\n  \"explanation\": \"The variable `numNodes` is accessed (decremented) by multiple OpenMP threads without any synchronization mechanism. In the pattern `numNodes--` the read‑modify‑write sequence is not atomic, so concurrent threads can interleave their reads and writes, leading to lost updates.\",\n  \"impact\": \"If the race occurs, the final value of `numNodes` may be larger than expected (i.e., fewer decrements are applied). This can cause incorrect loop bounds, missed work items, or premature termination of parallel regions, potentially leading to wrong results or runtime crashes.\",\n  \"reproduction\": \"Compile the code with OpenMP enabled and run with a high thread count (e.g., `OMP_NUM_THREADS=8`). Execute the parallel region many times; occasionally the program will output a `numNodes` value that is greater than the expected count after all decrements, or it may loop indefinitely because the termination condition based on `numNodes` is never satisfied.\",\n  \"recommendations\": \"1. Use an atomic operation: `#pragma omp atomic update` before the decrement, or use `atomic_fetch_sub` in C11.\\n2. Protect the update with a critical section: `#pragma omp critical { numNodes--; }`.\\n3. If the variable is only used as a counter for loop control, replace it with an OpenMP reduction clause (e.g., `reduction(-:numNodes)`).\\n4. Alternatively, redesign the algorithm to avoid shared mutable state altogether.\",\n  \"confidence_pct\": 95\n}",
+    "normalized_output": {
+      "severity": "high",
+      "is_real_race": true,
+      "confidence": 95.0,
+      "root_cause": "The variable `numNodes` is accessed (decremented) by multiple OpenMP threads without any synchronization mechanism. In the pattern `numNodes--` the read‑modify‑write sequence is not atomic, so concurrent threads can interleave their reads and writes, leading to lost updates.",
+      "runtime_impact": "",
+      "recommended_fix": "1. Use an atomic operation: `#pragma omp atomic update` before the decrement, or use `atomic_fetch_sub` in C11.\n2. Protect the update with a critical section: `#pragma omp critical { numNodes--; }`.\n3. If the variable is only used as a counter for loop control, replace it with an OpenMP reduction clause (e.g., `reduction(-:numNodes)`).\n4. Alternatively, redesign the algorithm to avoid shared mutable state altogether."
+    },
+    "validation_result": {
+      "schema_ok": true,
+      "schema_errors": [],
+      "fact_ok": null,
+      "fact_errors": []
+    }
+  },
+  {
+    "file": "datasets/dataracebench/micro-benchmarks\\DRB013-nowait-orig-yes.c",
+    "variable": "a",
+    "raw_llm_response": "{\n  \"severity\": \"high\",\n  \"is_real_race\": true,\n  \"explanation\": \"The file name (DRB013‑nowait‑orig‑yes.c) is a known OpenMP regression test that demonstrates a data race caused by using the `nowait` clause on a `parallel` region. In the original code the shared variable `a` is read and written by multiple threads without any explicit synchronization. Because `nowait` removes the implicit barrier at the end of the parallel region, threads may continue past the region while other threads are still accessing `a`, leading to a classic read‑write race.\",\n  \"impact\": \"At runtime the program may produce incorrect results (e.g., `a` ends up with a value that depends on the nondeterministic order of thread execution). In more severe cases the race can cause memory corruption, crashes, or silent data corruption that is hard to reproduce.\",\n  \"reproduction\": \"Compile the code with an OpenMP‑enabled compiler (e.g., `gcc -fopenmp`) and run it repeatedly. The race will manifest intermittently as different final values of `a` or as occasional segmentation faults when a thread reads a partially updated value while another thread is writing.\",\n  \"recommendations\": \"1. Remove the `nowait` clause so that the implicit barrier guarantees all threads have finished before the variable is used later.\\\\n2. If `nowait` is required for performance, protect accesses to `a` with an explicit synchronization construct such as an `atomic` directive (`#pragma omp atomic`) or a critical section (`#pragma omp critical`).\\\\n3. Alternatively, use a `reduction` clause if the operation on `a` is associative (e.g., addition).\\\\n4. Verify the fix with a thread sanitizer (e.g., `ThreadSanitizer`) to ensure the race is eliminated.\",\n  \"confidence_pct\": 92\n}",
+    "normalized_output": {
+      "severity": "high",
+      "is_real_race": true,
+      "confidence": 92.0,
+      "root_cause": "The file name (DRB013‑nowait‑orig‑yes.c) is a known OpenMP regression test that demonstrates a data race caused by using the `nowait` clause on a `parallel` region. In the original code the shared variable `a` is read and written by multiple threads without any explicit synchronization. Because `nowait` removes the implicit barrier at the end of the parallel region, threads may continue past the region while other threads are still accessing `a`, leading to a classic read‑write race.",
+      "runtime_impact": "",
+      "recommended_fix": "1. Remove the `nowait` clause so that the implicit barrier guarantees all threads have finished before the variable is used later.\\n2. If `nowait` is required for performance, protect accesses to `a` with an explicit synchronization construct such as an `atomic` directive (`#pragma omp atomic`) or a critical section (`#pragma omp critical`).\\n3. Alternatively, use a `reduction` clause if the operation on `a` is associative (e.g., addition).\\n4. Verify the fix with a thread sanitizer (e.g., `ThreadSanitizer`) to ensure the race is eliminated."
+    },
+    "validation_result": {
+      "schema_ok": true,
+      "schema_errors": [],
+      "fact_ok": null,
+      "fact_errors": []
+    }
+  },
+  {
+    "file": "samples/test_critical.c",
+    "variable": "shared_x",
+    "raw_llm_response": "{\n  \"severity\": \"low\",\n  \"is_real_race\": false,\n  \"explanation\": \"The static analyzer flagged 'shared_x' in an OpenMP critical region, but the provided code snippet only contains a synthetic variable 'sample' and shows no actual usage or definition of 'shared_x'. Without evidence of unsynchronized reads/writes to a shared variable, the warning is likely a false positive caused by incomplete context or missing annotations.\",\n  \"impact\": \"No runtime impact is expected because there is no demonstrable data race in the supplied code. If 'shared_x' were used elsewhere without proper synchronization, it could lead to incorrect values or undefined behavior, but the current context does not exhibit that.\",\n  \"reproduction\": \"The race cannot be reproduced from the given code. A reproducible scenario would require multiple threads reading/writing 'shared_x' outside a critical or atomic construct, which is not present here.\",\n  \"recommendations\": \"1. Verify that all accesses to 'shared_x' are protected by an OpenMP critical, atomic, or lock construct.\\n2. If 'shared_x' is intended to be private, declare it with the 'private' or 'firstprivate' clause.\\n3. Add explicit annotations or suppress false positives if the variable is safely guarded elsewhere.\\n4. Run the analysis with full source context to confirm whether the warning persists.\",\n  \"confidence_pct\": 85\n}",
+    "normalized_output": {
+      "severity": "low",
+      "is_real_race": false,
+      "confidence": 85.0,
+      "root_cause": "The static analyzer flagged 'shared_x' in an OpenMP critical region, but the provided code snippet only contains a synthetic variable 'sample' and shows no actual usage or definition of 'shared_x'. Without evidence of unsynchronized reads/writes to a shared variable, the warning is likely a false positive caused by incomplete context or missing annotations.",
+      "runtime_impact": "",
+      "recommended_fix": "1. Verify that all accesses to 'shared_x' are protected by an OpenMP critical, atomic, or lock construct.\n2. If 'shared_x' is intended to be private, declare it with the 'private' or 'firstprivate' clause.\n3. Add explicit annotations or suppress false positives if the variable is safely guarded elsewhere.\n4. Run the analysis with full source context to confirm whether the warning persists."
+    },
+    "validation_result": {
+      "schema_ok": true,
+      "schema_errors": [],
+      "fact_ok": null,
+      "fact_errors": []
+    }
+  },
+  {
+    "file": "samples/test_reduction.c",
+    "variable": "sum",
+    "raw_llm_response": "{\n  \"severity\": \"low\",\n  \"is_real_race\": false,\n  \"explanation\": \"The static analyzer flagged the variable 'sum' because it appears in an OpenMP reduction clause. In OpenMP, reduction variables are automatically privatized for each thread and combined in a well‑defined manner at the end of the parallel region. The synthetic initialization 'int sample = 0;' does not affect the reduction handling, and there is no actual shared mutable state that can be accessed concurrently without synchronization.\",\n  \"impact\": \"No runtime impact. The reduction mechanism guarantees that each thread works on its own private copy of 'sum' and that the final value is correctly accumulated, so data corruption or undefined behavior cannot occur.\",\n  \"reproduction\": \"A race condition cannot be reproduced because the OpenMP runtime correctly manages the private copies and the final reduction. Even with multiple threads, the program will produce the expected summed result.\",\n  \"recommendations\": [\n    \"Verify that the reduction clause is correctly attached to the parallel construct (e.g., `#pragma omp parallel for reduction(+:sum)`).\",\n    \"Avoid manually protecting a reduction variable with additional locks or critical sections, as this can interfere with the OpenMP reduction semantics.\",\n    \"If the variable is used outside the reduction region, ensure it is not accessed concurrently without proper synchronization.\",\n    \"Keep the code consistent with the OpenMP specification so that static analysis tools can correctly recognize the reduction pattern.\"\n  ],\n  \"confidence_pct\": 95\n}",
+    "normalized_output": {
+      "severity": "low",
+      "is_real_race": false,
+      "confidence": 95.0,
+      "root_cause": "The static analyzer flagged the variable 'sum' because it appears in an OpenMP reduction clause. In OpenMP, reduction variables are automatically privatized for each thread and combined in a well‑defined manner at the end of the parallel region. The synthetic initialization 'int sample = 0;' does not affect the reduction handling, and there is no actual shared mutable state that can be accessed concurrently without synchronization.",
+      "runtime_impact": "",
+      "recommended_fix": "Verify that the reduction clause is correctly attached to the parallel construct (e.g., `#pragma omp parallel for reduction(+:sum)`).; Avoid manually protecting a reduction variable with additional locks or critical sections, as this can interfere with the OpenMP reduction semantics.; If the variable is used outside the reduction region, ensure it is not accessed concurrently without proper synchronization.; Keep the code consistent with the OpenMP specification so that static analysis tools can correctly recognize the reduction pattern."
+    },
+    "validation_result": {
+      "schema_ok": true,
+      "schema_errors": [],
+      "fact_ok": null,
+      "fact_errors": []
+    }
+  },
+  {
+    "file": "samples/test_parallel.c",
+    "variable": "buf",
+    "raw_llm_response": "{\n  \"severity\": \"false_positive\",\n  \"is_real_race\": false,\n  \"explanation\": \"The static analyzer flagged a potential data race on the variable 'buf' inside an OpenMP parallel for region, but the provided source snippet only declares an unrelated variable 'sample'. No code that reads or writes 'buf' is visible, and the line information is missing. This suggests the warning is a false positive caused by incomplete context or a stale analysis artifact.\",\n  \"impact\": \"None. Since there is no actual shared mutable state named 'buf' in the visible code, no runtime data race can occur from this finding.\",\n  \"reproduction\": \"A race condition cannot be reproduced because the variable 'buf' is not used in the provided code. If 'buf' were later introduced without proper synchronization, a race could appear, but the current snippet shows no such usage.\",\n  \"recommendations\": \"1. Verify that the analysis input includes all relevant source files and that 'buf' is indeed defined and used in the parallel region. 2. If 'buf' is intended to be shared, protect accesses with an OpenMP critical section, atomic operation, or explicit lock. 3. If 'buf' is not used, suppress the warning or update the static analysis configuration to exclude false positives.\",\n  \"confidence_pct\": 85\n}",
+    "normalized_output": {
+      "severity": "low",
+      "is_real_race": false,
+      "confidence": 85.0,
+      "root_cause": "The static analyzer flagged a potential data race on the variable 'buf' inside an OpenMP parallel for region, but the provided source snippet only declares an unrelated variable 'sample'. No code that reads or writes 'buf' is visible, and the line information is missing. This suggests the warning is a false positive caused by incomplete context or a stale analysis artifact.",
+      "runtime_impact": "",
+      "recommended_fix": "1. Verify that the analysis input includes all relevant source files and that 'buf' is indeed defined and used in the parallel region. 2. If 'buf' is intended to be shared, protect accesses with an OpenMP critical section, atomic operation, or explicit lock. 3. If 'buf' is not used, suppress the warning or update the static analysis configuration to exclude false positives."
+    },
+    "validation_result": {
+      "schema_ok": true,
+      "schema_errors": [],
+      "fact_ok": null,
+      "fact_errors": []
+    }
+  }
+]

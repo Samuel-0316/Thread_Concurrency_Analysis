@@ -1,0 +1,22 @@
+{
+  "repo_id": "repo_1",
+  "files": 2,
+  "variables": 4,
+  "accesses": 4,
+  "threads": 3,
+  "sync_points": 8,
+  "sample_access": {
+    "access_id": "access_1",
+    "variable": "counter",
+    "access_type": "READ_WRITE",
+    "file": "sample.c",
+    "line": 0,
+    "thread_id": null,
+    "parallelism": "SEQUENTIAL",
+    "parallel_construct": "",
+    "synchronization": [],
+    "in_critical": false,
+    "in_reduction": false,
+    "confidence": "MEDIUM"
+  }
+}

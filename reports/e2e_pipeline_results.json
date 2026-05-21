@@ -1,0 +1,50 @@
+{
+  "pipeline": "Parser \u2192 IR \u2192 TIG \u2192 IR-Based Analysis",
+  "status": "complete",
+  "stages": [
+    {
+      "stage": "Parse",
+      "output": "Dict-based parser output"
+    },
+    {
+      "stage": "Normalize",
+      "output": "IRRepository (typed objects)"
+    },
+    {
+      "stage": "Build TIG",
+      "output": "Enriched TIG with IR metadata"
+    },
+    {
+      "stage": "Analyze",
+      "output": "ConcurrencyIssue objects"
+    }
+  ],
+  "ir_statistics": {
+    "files": 2,
+    "variables": 4,
+    "accesses": 4,
+    "threads": 3,
+    "sync_points": 8
+  },
+  "tig_statistics": {
+    "nodes": 13,
+    "edges": 4,
+    "protected_accesses": 0,
+    "unprotected_accesses": 0
+  },
+  "findings": {
+    "data_races": 0,
+    "unprotected_accesses": 0,
+    "lock_order_violations": 0,
+    "openmp_races": 0,
+    "total": 0
+  },
+  "benefits": [
+    "Type-safe ConcurrencyIssue objects",
+    "Full IR metadata in each finding",
+    "Confidence tracking throughout",
+    "Ready for RAG/LLM enhancement",
+    "Structured for multi-agent reasoning",
+    "Backward compatible with legacy code"
+  ]
+}

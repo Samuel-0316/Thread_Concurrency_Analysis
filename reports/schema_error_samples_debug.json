@@ -1,0 +1,127 @@
+[
+  {
+    "file": "datasets/dataracebench/micro-benchmarks\\DRB001-antidep1-orig-yes.c",
+    "variable": "a",
+    "legacy_schema_errors": [
+      "missing_key:root_cause",
+      "missing_key:runtime_impact",
+      "missing_key:recommended_fix",
+      "missing_key:confidence"
+    ],
+    "runtime_impact_excerpt": "At runtime the race can cause lost updates, torn reads, or inconsistent final values of 'a'. The program may produce non‑deterministic results, silently corrupt data, or, in extreme cases, trigger undefined behavior that could crash the application.",
+    "normalized_output": {
+      "severity": "high",
+      "is_real_race": true,
+      "confidence": 85.0,
+      "root_cause": "The static analyzer flags variable 'a' because it is accessed (read and/or written) by multiple OpenMP threads without any explicit synchronization construct (e.g., atomic, critical, or barrier). In the DRB001‑antidep1 benchmark the code typically contains two parallel regions that both read and write 'a', creating a classic read‑write or write‑write race.",
+      "runtime_impact": "At runtime the race can cause lost updates, torn reads, or inconsistent final values of 'a'. The program may produce non‑deterministic results, silently corrupt data, or, in extreme cases, trigger undefined behavior that could crash the application.",
+      "recommended_fix": "Introduce proper synchronization around accesses to 'a':\n- Use an atomic directive if the operation is a simple read‑modify‑write (e.g., #pragma omp atomic update).\n- Enclose the critical section in a #pragma omp critical block if more complex logic is involved.\n- Alternatively, restructure the code to give each thread its own private copy of 'a' and combine results after the parallel region (reduction clause)."
+    },
+    "validation_result": {
+      "schema_ok": true,
+      "schema_errors": [],
+      "fact_ok": null,
+      "fact_errors": []
+    }
+  },
+  {
+    "file": "datasets/dataracebench/micro-benchmarks\\DRB002-antidep1-var-yes.c",
+    "variable": "a",
+    "legacy_schema_errors": [
+      "missing_key:root_cause",
+      "missing_key:runtime_impact",
+      "missing_key:recommended_fix",
+      "missing_key:confidence"
+    ],
+    "runtime_impact_excerpt": "At runtime the racing accesses can cause lost updates, stale data reads, or inconsistent program state. The final value of 'a' becomes nondeterministic, leading to incorrect benchmark results or, in production code, subtle bugs that are hard to reproduce.",
+    "normalized_output": {
+      "severity": "high",
+      "is_real_race": true,
+      "confidence": 85.0,
+      "root_cause": "The static analyzer identified variable 'a' as being accessed in an OpenMP parallel region without explicit synchronization. In the DRB002‑antidep1‑var‑yes benchmark the code contains a write to 'a' in one thread and a subsequent read of the same variable in another thread (or a later iteration) without a barrier, atomic, or critical construct. This satisfies the classic read‑write race condition definition.",
+      "runtime_impact": "At runtime the racing accesses can cause lost updates, stale data reads, or inconsistent program state. The final value of 'a' becomes nondeterministic, leading to incorrect benchmark results or, in production code, subtle bugs that are hard to reproduce.",
+      "recommended_fix": "1. Protect the shared variable with an atomic construct:\n   #pragma omp atomic write\n   a = new_value;\n   #pragma omp atomic read\n   tmp = a;\n2. Or enclose the accesses in a critical section:\n   #pragma omp critical\n   { a = new_value; }\n3. If the access pattern allows, use OpenMP depend clauses to express the anti‑dependence and let the runtime enforce ordering.\n4. Alternatively, privatize 'a' per thread and merge results after a barrier."
+    },
+    "validation_result": {
+      "schema_ok": true,
+      "schema_errors": [],
+      "fact_ok": null,
+      "fact_errors": []
+    }
+  },
+  {
+    "file": "datasets/dataracebench/micro-benchmarks\\DRB011-minusminus-orig-yes.c",
+    "variable": "numNodes",
+    "legacy_schema_errors": [
+      "missing_key:root_cause",
+      "missing_key:runtime_impact",
+      "missing_key:recommended_fix",
+      "missing_key:confidence"
+    ],
+    "runtime_impact_excerpt": "Lost updates can cause `numNodes` to retain a larger value than expected, become negative, or lead to incorrect control‑flow decisions (e.g., premature loop termination or missed work).  In safety‑critical or performance‑sensitive code this may cause silent corruption, crashes, or incorrect benchmark results.",
+    "normalized_output": {
+      "severity": "high",
+      "is_real_race": true,
+      "confidence": 92.0,
+      "root_cause": "The variable `numNodes` is shared among OpenMP threads and is modified by a non‑atomic decrement (`--numNodes` or `numNodes--`).  No synchronization construct (critical section, atomic, or reduction) protects the read‑modify‑write sequence, so concurrent threads can interleave their accesses, producing a classic data race.",
+      "runtime_impact": "Lost updates can cause `numNodes` to retain a larger value than expected, become negative, or lead to incorrect control‑flow decisions (e.g., premature loop termination or missed work).  In safety‑critical or performance‑sensitive code this may cause silent corruption, crashes, or incorrect benchmark results.",
+      "recommended_fix": "1. Use an atomic operation: `#pragma omp atomic update` before the decrement.\\n2. Wrap the decrement in a critical section: `#pragma omp critical { --numNodes; }`.\\n3. If the variable is only used to count work, replace it with a reduction clause: `reduction(-:numNodes)` on the parallel region.\\n4. Alternatively, make the variable private to each thread and combine results after the parallel region."
+    },
+    "validation_result": {
+      "schema_ok": true,
+      "schema_errors": [],
+      "fact_ok": null,
+      "fact_errors": []
+    }
+  },
+  {
+    "file": "datasets/dataracebench/micro-benchmarks\\DRB012-minusminus-var-yes.c",
+    "variable": "numNodes",
+    "legacy_schema_errors": [
+      "missing_key:root_cause",
+      "missing_key:runtime_impact",
+      "missing_key:recommended_fix",
+      "missing_key:confidence"
+    ],
+    "runtime_impact_excerpt": "If the race occurs, the final value of `numNodes` may be larger than expected (i.e., fewer decrements are applied). This can cause incorrect loop bounds, missed work items, or premature termination of parallel regions, potentially leading to wrong results or runtime crashes.",
+    "normalized_output": {
+      "severity": "high",
+      "is_real_race": true,
+      "confidence": 95.0,
+      "root_cause": "The variable `numNodes` is accessed (decremented) by multiple OpenMP threads without any synchronization mechanism. In the pattern `numNodes--` the read‑modify‑write sequence is not atomic, so concurrent threads can interleave their reads and writes, leading to lost updates.",
+      "runtime_impact": "If the race occurs, the final value of `numNodes` may be larger than expected (i.e., fewer decrements are applied). This can cause incorrect loop bounds, missed work items, or premature termination of parallel regions, potentially leading to wrong results or runtime crashes.",
+      "recommended_fix": "1. Use an atomic operation: `#pragma omp atomic update` before the decrement, or use `atomic_fetch_sub` in C11.\n2. Protect the update with a critical section: `#pragma omp critical { numNodes--; }`.\n3. If the variable is only used as a counter for loop control, replace it with an OpenMP reduction clause (e.g., `reduction(-:numNodes)`).\n4. Alternatively, redesign the algorithm to avoid shared mutable state altogether."
+    },
+    "validation_result": {
+      "schema_ok": true,
+      "schema_errors": [],
+      "fact_ok": null,
+      "fact_errors": []
+    }
+  },
+  {
+    "file": "datasets/dataracebench/micro-benchmarks\\DRB013-nowait-orig-yes.c",
+    "variable": "a",
+    "legacy_schema_errors": [
+      "missing_key:root_cause",
+      "missing_key:runtime_impact",
+      "missing_key:recommended_fix",
+      "missing_key:confidence"
+    ],
+    "runtime_impact_excerpt": "At runtime the program may produce incorrect results (e.g., `a` ends up with a value that depends on the nondeterministic order of thread execution). In more severe cases the race can cause memory corruption, crashes, or silent data corruption that is hard to reproduce.",
+    "normalized_output": {
+      "severity": "high",
+      "is_real_race": true,
+      "confidence": 92.0,
+      "root_cause": "The file name (DRB013‑nowait‑orig‑yes.c) is a known OpenMP regression test that demonstrates a data race caused by using the `nowait` clause on a `parallel` region. In the original code the shared variable `a` is read and written by multiple threads without any explicit synchronization. Because `nowait` removes the implicit barrier at the end of the parallel region, threads may continue past the region while other threads are still accessing `a`, leading to a classic read‑write race.",
+      "runtime_impact": "At runtime the program may produce incorrect results (e.g., `a` ends up with a value that depends on the nondeterministic order of thread execution). In more severe cases the race can cause memory corruption, crashes, or silent data corruption that is hard to reproduce.",
+      "recommended_fix": "1. Remove the `nowait` clause so that the implicit barrier guarantees all threads have finished before the variable is used later.\\n2. If `nowait` is required for performance, protect accesses to `a` with an explicit synchronization construct such as an `atomic` directive (`#pragma omp atomic`) or a critical section (`#pragma omp critical`).\\n3. Alternatively, use a `reduction` clause if the operation on `a` is associative (e.g., addition).\\n4. Verify the fix with a thread sanitizer (e.g., `ThreadSanitizer`) to ensure the race is eliminated."
+    },
+    "validation_result": {
+      "schema_ok": true,
+      "schema_errors": [],
+      "fact_ok": null,
+      "fact_errors": []
+    }
+  }
+]

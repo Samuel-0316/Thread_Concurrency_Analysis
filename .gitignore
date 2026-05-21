@@ -1,0 +1,47 @@
+# ── Python ──
+__pycache__/
+*.py[cod]
+*.pyo
+*.egg-info/
+dist/
+build/
+*.egg
+
+# ── Virtual Environment ──
+.venv/
+venv/
+env/
+
+# ── Environment Secrets ──
+.env
+.env.example
+
+# ── Pytest ──
+.pytest_cache/
+
+# ── Compiled Tree-sitter Binaries ──
+backend/parser_service/vendor/lib/*.dll
+backend/parser_service/vendor/lib/*.so
+backend/parser_service/vendor/lib/*.dylib
+
+# ── Cloned External Datasets ──
+datasets/dataracebench/
+
+# ── Log / Temp Files ──
+*.log
+llm_response.txt
+
+# ── Large Binary Files ──
+*.pdf
+
+# ── OS Files ──
+Thumbs.db
+.DS_Store
+
+sample_corrected.c
+sample.c
+test_histogram.c
+test_llm_fix.py
+test_matrix.c
+analyze_stderr.log
+benchmark_run_with_llm.log

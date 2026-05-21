@@ -1,0 +1,6 @@
+rule,count
+unsynchronized_accesses,0
+lock_order_violations,0
+deadlock_cycles,0
+openmp_races,169
+openmp_races_suppressed,67

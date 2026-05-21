@@ -1,0 +1,34 @@
+{
+  "dataset": "DataRaceBench (subset)",
+  "files_analyzed": 20,
+  "ir_statistics": {
+    "variables": 62,
+    "accesses": 68,
+    "threads": 0
+  },
+  "findings": {
+    "data_races": 6,
+    "unprotected_accesses": 6,
+    "lock_order_violations": 0,
+    "openmp_races": 0,
+    "openmp_suppressed": 0,
+    "total": 12
+  },
+  "severity_distribution": {
+    "high": 6,
+    "medium": 6
+  },
+  "issue_types": {
+    "data_race": 6,
+    "unprotected_access": 6
+  },
+  "improvements": [
+    "Type-safe ConcurrencyIssue objects instead of dicts",
+    "Full access metadata preserved (thread_id, synchronization, confidence)",
+    "Variable context available (scope, protection_methods)",
+    "Confidence tracking from IR",
+    "OpenMP clause awareness",
+    "Structured for LLM enhancement",
+    "Ready for multi-agent reasoning"
+  ]
+}

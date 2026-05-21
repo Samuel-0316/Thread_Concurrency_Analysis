@@ -1,0 +1,80 @@
+[
+  {
+    "finding": {
+      "file": "D:\\Major Project\\New_Implementation\\datasets\\dataracebench\\micro-benchmarks\\DRB001-antidep1-orig-yes.c",
+      "variable": "a",
+      "reason": "openmp_shared_write",
+      "pragmas": [
+        "parallel_for"
+      ],
+      "confidence": 0.9,
+      "context_summary": "\nFinding Summary:\n  File: DRB001-antidep1-orig-yes.c\n  Variable: a\n  OpenMP Context: unknown\n  Line: None\n  \nSource Code Context:\n/*\nCopyright (c) 2017, Lawrence Livermore National Security, LLC.\nProduced at the Lawrence Livermore National Laboratory\nWritten by Chunhua Liao, Pei-Hung Lin, Joshua Asplund,\nMarkus Schordan, and Ian Karlin\n(email: liao6@llnl.gov, lin32@llnl.gov, asplund1@llnl.gov,\nschordan1@llnl.gov, karlin1@llnl.gov)\nLLNL-CODE-732144\nAll rights reserved.\n\nThis file is part of DataRaceBench. For details, see\nhttps://github.com/LLNL/dataracebench. Please also see the LICENSE file\nfor our additional BSD notice.\n\nRedistribution and use in source and binary forms, with\nor without modification, are permitted provided that the following\nconditions are met:\n\n* Redistributions of source code must retain the above copyright\n  notice, this list of conditions and the disclaimer below.\n\n\nFunction Containing Finding:\nN/A\n"
+    },
+    "analysis": {
+      "severity": "high",
+      "is_real_race": true,
+      "explanation": "Variable is accessed in parallel region without synchronization.",
+      "impact": "Multiple threads may read/write simultaneously, causing undefined behavior.",
+      "reproduction": "Run with multiple threads; race condition may manifest as data corruption.",
+      "recommendations": [
+        "Add #pragma omp critical",
+        "Use atomic operations",
+        "Use locks"
+      ],
+      "confidence_pct": 92
+    },
+    "model": "mock",
+    "source": "mock_analysis"
+  },
+  {
+    "finding": {
+      "file": "D:\\Major Project\\New_Implementation\\datasets\\dataracebench\\micro-benchmarks\\DRB002-antidep1-var-yes.c",
+      "variable": "a",
+      "reason": "openmp_shared_write",
+      "pragmas": [
+        "parallel_for"
+      ],
+      "confidence": 0.9,
+      "context_summary": "\nFinding Summary:\n  File: DRB002-antidep1-var-yes.c\n  Variable: a\n  OpenMP Context: unknown\n  Line: None\n  \nSource Code Context:\n/*\nCopyright (c) 2017, Lawrence Livermore National Security, LLC.\nProduced at the Lawrence Livermore National Laboratory\nWritten by Chunhua Liao, Pei-Hung Lin, Joshua Asplund,\nMarkus Schordan, and Ian Karlin\n(email: liao6@llnl.gov, lin32@llnl.gov, asplund1@llnl.gov,\nschordan1@llnl.gov, karlin1@llnl.gov)\nLLNL-CODE-732144\nAll rights reserved.\n\nThis file is part of DataRaceBench. For details, see\nhttps://github.com/LLNL/dataracebench. Please also see the LICENSE file\nfor our additional BSD notice.\n\nRedistribution and use in source and binary forms, with\nor without modification, are permitted provided that the following\nconditions are met:\n\n* Redistributions of source code must retain the above copyright\n  notice, this list of conditions and the disclaimer below.\n\n\nFunction Containing Finding:\nN/A\n"
+    },
+    "analysis": {
+      "severity": "medium",
+      "is_real_race": true,
+      "explanation": "Shared variable in reduction context but with additional unguarded accesses.",
+      "impact": "Final result may be incorrect; intermediate calculations corrupted.",
+      "reproduction": "High thread count increases probability of race manifestation.",
+      "recommendations": [
+        "Ensure all accesses are in reduction or critical sections",
+        "Review OpenMP clauses"
+      ],
+      "confidence_pct": 78
+    },
+    "model": "mock",
+    "source": "mock_analysis"
+  },
+  {
+    "finding": {
+      "file": "D:\\Major Project\\New_Implementation\\datasets\\dataracebench\\micro-benchmarks\\DRB011-minusminus-orig-yes.c",
+      "variable": "numNodes",
+      "reason": "openmp_shared_write",
+      "pragmas": [
+        "parallel_for"
+      ],
+      "confidence": 0.9,
+      "context_summary": "\nFinding Summary:\n  File: DRB011-minusminus-orig-yes.c\n  Variable: numNodes\n  OpenMP Context: unknown\n  Line: None\n  \nSource Code Context:\n/*\nCopyright (c) 2017, Lawrence Livermore National Security, LLC.\nProduced at the Lawrence Livermore National Laboratory\nWritten by Chunhua Liao, Pei-Hung Lin, Joshua Asplund,\nMarkus Schordan, and Ian Karlin\n(email: liao6@llnl.gov, lin32@llnl.gov, asplund1@llnl.gov,\nschordan1@llnl.gov, karlin1@llnl.gov)\nLLNL-CODE-732144\nAll rights reserved.\n\nThis file is part of DataRaceBench. For details, see\nhttps://github.com/LLNL/dataracebench. Please also see the LICENSE file\nfor our additional BSD notice.\n\nRedistribution and use in source and binary forms, with\nor without modification, are permitted provided that the following\nconditions are met:\n\n* Redistributions of source code must retain the above copyright\n  notice, this list of conditions and the disclaimer below.\n\n\nFunction Containing Finding:\nN/A\n"
+    },
+    "analysis": {
+      "severity": "low",
+      "is_real_race": false,
+      "explanation": "Variable marked as shared in parallel for loop with implicit barrier.",
+      "impact": "Barrier at end of parallel for ensures synchronization before next access.",
+      "reproduction": "Not reproducible; implicit barrier prevents race.",
+      "recommendations": [
+        "Verify implicit barrier behavior in your OpenMP implementation"
+      ],
+      "confidence_pct": 65
+    },
+    "model": "mock",
+    "source": "mock_analysis"
+  }
+]

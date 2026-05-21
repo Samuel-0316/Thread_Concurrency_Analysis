@@ -1,0 +1,1103 @@
+{
+  "openmp_races_suppressed": [
+    {
+      "file": "D:\\Major Project\\New_Implementation\\datasets\\dataracebench\\micro-benchmarks\\DRB041-3mm-parallel-no.c",
+      "variable": "c2",
+      "reason": "openmp_shared_write",
+      "pragmas": [
+        "parallel_for",
+        "parallel_for",
+        "parallel_for",
+        "parallel_for",
+        "parallel_for",
+        "parallel_for",
+        "parallel_for",
+        "parallel_for",
+        "parallel_for",
+        "parallel_for",
+        "parallel_for",
+        "parallel_for",
+        "parallel_for",
+        "parallel_for",
+        "parallel_for",
+        "parallel_for",
+        "parallel_for",
+        "parallel_for",
+        "parallel_for",
+        "parallel_for",
+        "parallel_for",
+        "parallel_for",
+        "parallel_for",
+        "parallel_for",
+        "parallel_for",
+        "parallel_for",
+        "parallel_for",
+        "parallel_for",
+        "parallel_for",
+        "parallel_for",
+        "parallel_for",
+        "parallel_for",
+        "parallel_for",
+        "parallel_for",
+        "parallel_for",
+        "parallel_for",
+        "parallel_for"
+      ],
+      "confidence": 0.1,
+      "notes": [
+        "protected_by_clause"
+      ]
+    },
+    {
+      "file": "D:\\Major Project\\New_Implementation\\datasets\\dataracebench\\micro-benchmarks\\DRB041-3mm-parallel-no.c",
+      "variable": "c5",
+      "reason": "openmp_shared_write",
+      "pragmas": [
+        "parallel_for",
+        "parallel_for",
+        "parallel_for",
+        "parallel_for",
+        "parallel_for",
+        "parallel_for",
+        "parallel_for",
+        "parallel_for",
+        "parallel_for",
+        "parallel_for",
+        "parallel_for",
+        "parallel_for",
+        "parallel_for",
+        "parallel_for",
+        "parallel_for",
+        "parallel_for",
+        "parallel_for",
+        "parallel_for",
+        "parallel_for",
+        "parallel_for",
+        "parallel_for",
+        "parallel_for",
+        "parallel_for",
+        "parallel_for",
+        "parallel_for",
+        "parallel_for",
+        "parallel_for",
+        "parallel_for",
+        "parallel_for",
+        "parallel_for",
+        "parallel_for",
+        "parallel_for",
+        "parallel_for",
+        "parallel_for",
+        "parallel_for",
+        "parallel_for",
+        "parallel_for"
+      ],
+      "confidence": 0.1,
+      "notes": [
+        "protected_by_clause"
+      ]
+    },
+    {
+      "file": "D:\\Major Project\\New_Implementation\\datasets\\dataracebench\\micro-benchmarks\\DRB042-3mm-tile-no.c",
+      "variable": "c10",
+      "reason": "openmp_shared_write",
+      "pragmas": [
+        "parallel_for",
+        "parallel_for",
+        "parallel_for",
+        "parallel_for",
+        "parallel_for",
+        "parallel_for",
+        "parallel_for",
+        "parallel_for",
+        "parallel_for",
+        "parallel_for",
+        "parallel_for",
+        "parallel_for",
+        "parallel_for",
+        "parallel_for",
+        "parallel_for",
+        "parallel_for",
+        "parallel_for"
+      ],
+      "confidence": 0.1,
+      "notes": [
+        "protected_by_clause"
+      ]
+    },
+    {
+      "file": "D:\\Major Project\\New_Implementation\\datasets\\dataracebench\\micro-benchmarks\\DRB042-3mm-tile-no.c",
+      "variable": "c2",
+      "reason": "openmp_shared_write",
+      "pragmas": [
+        "parallel_for",
+        "parallel_for",
+        "parallel_for",
+        "parallel_for",
+        "parallel_for",
+        "parallel_for",
+        "parallel_for",
+        "parallel_for",
+        "parallel_for",
+        "parallel_for",
+        "parallel_for",
+        "parallel_for",
+        "parallel_for",
+        "parallel_for",
+        "parallel_for",
+        "parallel_for",
+        "parallel_for"
+      ],
+      "confidence": 0.1,
+      "notes": [
+        "protected_by_clause"
+      ]
+    },
+    {
+      "file": "D:\\Major Project\\New_Implementation\\datasets\\dataracebench\\micro-benchmarks\\DRB042-3mm-tile-no.c",
+      "variable": "c3",
+      "reason": "openmp_shared_write",
+      "pragmas": [
+        "parallel_for",
+        "parallel_for",
+        "parallel_for",
+        "parallel_for",
+        "parallel_for",
+        "parallel_for",
+        "parallel_for",
+        "parallel_for",
+        "parallel_for",
+        "parallel_for",
+        "parallel_for",
+        "parallel_for",
+        "parallel_for",
+        "parallel_for",
+        "parallel_for",
+        "parallel_for",
+        "parallel_for"
+      ],
+      "confidence": 0.1,
+      "notes": [
+        "protected_by_clause"
+      ]
+    },
+    {
+      "file": "D:\\Major Project\\New_Implementation\\datasets\\dataracebench\\micro-benchmarks\\DRB042-3mm-tile-no.c",
+      "variable": "c4",
+      "reason": "openmp_shared_write",
+      "pragmas": [
+        "parallel_for",
+        "parallel_for",
+        "parallel_for",
+        "parallel_for",
+        "parallel_for",
+        "parallel_for",
+        "parallel_for",
+        "parallel_for",
+        "parallel_for",
+        "parallel_for",
+        "parallel_for",
+        "parallel_for",
+        "parallel_for",
+        "parallel_for",
+        "parallel_for",
+        "parallel_for",
+        "parallel_for"
+      ],
+      "confidence": 0.1,
+      "notes": [
+        "protected_by_clause"
+      ]
+    },
+    {
+      "file": "D:\\Major Project\\New_Implementation\\datasets\\dataracebench\\micro-benchmarks\\DRB042-3mm-tile-no.c",
+      "variable": "c5",
+      "reason": "openmp_shared_write",
+      "pragmas": [
+        "parallel_for",
+        "parallel_for",
+        "parallel_for",
+        "parallel_for",
+        "parallel_for",
+        "parallel_for",
+        "parallel_for",
+        "parallel_for",
+        "parallel_for",
+        "parallel_for",
+        "parallel_for",
+        "parallel_for",
+        "parallel_for",
+        "parallel_for",
+        "parallel_for",
+        "parallel_for",
+        "parallel_for"
+      ],
+      "confidence": 0.1,
+      "notes": [
+        "protected_by_clause"
+      ]
+    },
+    {
+      "file": "D:\\Major Project\\New_Implementation\\datasets\\dataracebench\\micro-benchmarks\\DRB042-3mm-tile-no.c",
+      "variable": "c6",
+      "reason": "openmp_shared_write",
+      "pragmas": [
+        "parallel_for",
+        "parallel_for",
+        "parallel_for",
+        "parallel_for",
+        "parallel_for",
+        "parallel_for",
+        "parallel_for",
+        "parallel_for",
+        "parallel_for",
+        "parallel_for",
+        "parallel_for",
+        "parallel_for",
+        "parallel_for",
+        "parallel_for",
+        "parallel_for",
+        "parallel_for",
+        "parallel_for"
+      ],
+      "confidence": 0.1,
+      "notes": [
+        "protected_by_clause"
+      ]
+    },
+    {
+      "file": "D:\\Major Project\\New_Implementation\\datasets\\dataracebench\\micro-benchmarks\\DRB042-3mm-tile-no.c",
+      "variable": "c7",
+      "reason": "openmp_shared_write",
+      "pragmas": [
+        "parallel_for",
+        "parallel_for",
+        "parallel_for",
+        "parallel_for",
+        "parallel_for",
+        "parallel_for",
+        "parallel_for",
+        "parallel_for",
+        "parallel_for",
+        "parallel_for",
+        "parallel_for",
+        "parallel_for",
+        "parallel_for",
+        "parallel_for",
+        "parallel_for",
+        "parallel_for",
+        "parallel_for"
+      ],
+      "confidence": 0.1,
+      "notes": [
+        "protected_by_clause"
+      ]
+    },
+    {
+      "file": "D:\\Major Project\\New_Implementation\\datasets\\dataracebench\\micro-benchmarks\\DRB043-adi-parallel-no.c",
+      "variable": "c2",
+      "reason": "openmp_shared_write",
+      "pragmas": [
+        "parallel_for",
+        "parallel_for",
+        "parallel_for",
+        "parallel_for",
+        "parallel_for"
+      ],
+      "confidence": 0.1,
+      "notes": [
+        "protected_by_clause"
+      ]
+    },
+    {
+      "file": "D:\\Major Project\\New_Implementation\\datasets\\dataracebench\\micro-benchmarks\\DRB043-adi-parallel-no.c",
+      "variable": "c8",
+      "reason": "openmp_shared_write",
+      "pragmas": [
+        "parallel_for",
+        "parallel_for",
+        "parallel_for",
+        "parallel_for",
+        "parallel_for"
+      ],
+      "confidence": 0.1,
+      "notes": [
+        "protected_by_clause"
+      ]
+    },
+    {
+      "file": "D:\\Major Project\\New_Implementation\\datasets\\dataracebench\\micro-benchmarks\\DRB044-adi-tile-no.c",
+      "variable": "c15",
+      "reason": "openmp_shared_write",
+      "pragmas": [
+        "parallel_for",
+        "parallel_for",
+        "parallel_for",
+        "parallel_for",
+        "parallel_for"
+      ],
+      "confidence": 0.1,
+      "notes": [
+        "protected_by_clause"
+      ]
+    },
+    {
+      "file": "D:\\Major Project\\New_Implementation\\datasets\\dataracebench\\micro-benchmarks\\DRB044-adi-tile-no.c",
+      "variable": "c2",
+      "reason": "openmp_shared_write",
+      "pragmas": [
+        "parallel_for",
+        "parallel_for",
+        "parallel_for",
+        "parallel_for",
+        "parallel_for"
+      ],
+      "confidence": 0.1,
+      "notes": [
+        "protected_by_clause"
+      ]
+    },
+    {
+      "file": "D:\\Major Project\\New_Implementation\\datasets\\dataracebench\\micro-benchmarks\\DRB044-adi-tile-no.c",
+      "variable": "c3",
+      "reason": "openmp_shared_write",
+      "pragmas": [
+        "parallel_for",
+        "parallel_for",
+        "parallel_for",
+        "parallel_for",
+        "parallel_for"
+      ],
+      "confidence": 0.1,
+      "notes": [
+        "protected_by_clause"
+      ]
+    },
+    {
+      "file": "D:\\Major Project\\New_Implementation\\datasets\\dataracebench\\micro-benchmarks\\DRB044-adi-tile-no.c",
+      "variable": "c4",
+      "reason": "openmp_shared_write",
+      "pragmas": [
+        "parallel_for",
+        "parallel_for",
+        "parallel_for",
+        "parallel_for",
+        "parallel_for"
+      ],
+      "confidence": 0.1,
+      "notes": [
+        "protected_by_clause"
+      ]
+    },
+    {
+      "file": "D:\\Major Project\\New_Implementation\\datasets\\dataracebench\\micro-benchmarks\\DRB044-adi-tile-no.c",
+      "variable": "c8",
+      "reason": "openmp_shared_write",
+      "pragmas": [
+        "parallel_for",
+        "parallel_for",
+        "parallel_for",
+        "parallel_for",
+        "parallel_for"
+      ],
+      "confidence": 0.1,
+      "notes": [
+        "protected_by_clause"
+      ]
+    },
+    {
+      "file": "D:\\Major Project\\New_Implementation\\datasets\\dataracebench\\micro-benchmarks\\DRB044-adi-tile-no.c",
+      "variable": "c9",
+      "reason": "openmp_shared_write",
+      "pragmas": [
+        "parallel_for",
+        "parallel_for",
+        "parallel_for",
+        "parallel_for",
+        "parallel_for"
+      ],
+      "confidence": 0.1,
+      "notes": [
+        "protected_by_clause"
+      ]
+    },
+    {
+      "file": "D:\\Major Project\\New_Implementation\\datasets\\dataracebench\\micro-benchmarks\\DRB055-jacobi2d-parallel-no.c",
+      "variable": "c2",
+      "reason": "openmp_shared_write",
+      "pragmas": [
+        "parallel_for",
+        "parallel_for"
+      ],
+      "confidence": 0.1,
+      "notes": [
+        "protected_by_clause"
+      ]
+    },
+    {
+      "file": "D:\\Major Project\\New_Implementation\\datasets\\dataracebench\\micro-benchmarks\\DRB056-jacobi2d-tile-no.c",
+      "variable": "c2",
+      "reason": "openmp_shared_write",
+      "pragmas": [
+        "parallel_for",
+        "parallel_for"
+      ],
+      "confidence": 0.1,
+      "notes": [
+        "protected_by_clause"
+      ]
+    },
+    {
+      "file": "D:\\Major Project\\New_Implementation\\datasets\\dataracebench\\micro-benchmarks\\DRB056-jacobi2d-tile-no.c",
+      "variable": "c3",
+      "reason": "openmp_shared_write",
+      "pragmas": [
+        "parallel_for",
+        "parallel_for"
+      ],
+      "confidence": 0.1,
+      "notes": [
+        "protected_by_clause"
+      ]
+    },
+    {
+      "file": "D:\\Major Project\\New_Implementation\\datasets\\dataracebench\\micro-benchmarks\\DRB056-jacobi2d-tile-no.c",
+      "variable": "c4",
+      "reason": "openmp_shared_write",
+      "pragmas": [
+        "parallel_for",
+        "parallel_for"
+      ],
+      "confidence": 0.1,
+      "notes": [
+        "protected_by_clause"
+      ]
+    },
+    {
+      "file": "D:\\Major Project\\New_Implementation\\datasets\\dataracebench\\micro-benchmarks\\DRB056-jacobi2d-tile-no.c",
+      "variable": "c5",
+      "reason": "openmp_shared_write",
+      "pragmas": [
+        "parallel_for",
+        "parallel_for"
+      ],
+      "confidence": 0.1,
+      "notes": [
+        "protected_by_clause"
+      ]
+    },
+    {
+      "file": "D:\\Major Project\\New_Implementation\\datasets\\dataracebench\\micro-benchmarks\\DRB062-matrixvector2-orig-no.c",
+      "variable": "sum",
+      "reason": "openmp_shared_write",
+      "pragmas": [
+        "parallel_for"
+      ],
+      "confidence": 0.1,
+      "notes": [
+        "protected_by_clause"
+      ]
+    },
+    {
+      "file": "D:\\Major Project\\New_Implementation\\datasets\\dataracebench\\micro-benchmarks\\DRB065-pireduction-orig-no.c",
+      "variable": "pi",
+      "reason": "openmp_shared_write",
+      "pragmas": [
+        "parallel_for"
+      ],
+      "confidence": 0.1,
+      "notes": [
+        "protected_by_clause"
+      ]
+    },
+    {
+      "file": "D:\\Major Project\\New_Implementation\\datasets\\dataracebench\\micro-benchmarks\\DRB065-pireduction-orig-no.c",
+      "variable": "x",
+      "reason": "openmp_shared_write",
+      "pragmas": [
+        "parallel_for"
+      ],
+      "confidence": 0.1,
+      "notes": [
+        "protected_by_clause"
+      ]
+    },
+    {
+      "file": "D:\\Major Project\\New_Implementation\\datasets\\dataracebench\\micro-benchmarks\\DRB067-restrictpointer1-orig-no.c",
+      "variable": "length",
+      "reason": "openmp_shared_write",
+      "pragmas": [
+        "parallel_for"
+      ],
+      "confidence": 0.1,
+      "notes": [
+        "protected_by_clause"
+      ]
+    },
+    {
+      "file": "D:\\Major Project\\New_Implementation\\datasets\\dataracebench\\micro-benchmarks\\DRB084-threadprivatemissing-orig-yes.c",
+      "variable": "sum0",
+      "reason": "openmp_shared_write",
+      "pragmas": [
+        "parallel",
+        "for",
+        "critical"
+      ],
+      "confidence": 0.25,
+      "notes": [
+        "guarded_by_critical",
+        "critical_present"
+      ]
+    },
+    {
+      "file": "D:\\Major Project\\New_Implementation\\datasets\\dataracebench\\micro-benchmarks\\DRB085-threadprivate-orig-no.c",
+      "variable": "sum0",
+      "reason": "openmp_shared_write",
+      "pragmas": [
+        "parallel",
+        "for",
+        "critical"
+      ],
+      "confidence": 0.1,
+      "notes": [
+        "protected_by_clause",
+        "guarded_by_critical",
+        "critical_present"
+      ]
+    },
+    {
+      "file": "D:\\Major Project\\New_Implementation\\datasets\\dataracebench\\micro-benchmarks\\DRB091-threadprivate2-orig-no.c",
+      "variable": "sum0",
+      "reason": "openmp_shared_write",
+      "pragmas": [
+        "parallel",
+        "for",
+        "critical"
+      ],
+      "confidence": 0.1,
+      "notes": [
+        "protected_by_clause",
+        "guarded_by_critical",
+        "critical_present"
+      ]
+    },
+    {
+      "file": "D:\\Major Project\\New_Implementation\\datasets\\dataracebench\\micro-benchmarks\\DRB092-threadprivatemissing2-orig-yes.c",
+      "variable": "sum0",
+      "reason": "openmp_shared_write",
+      "pragmas": [
+        "parallel",
+        "for",
+        "critical"
+      ],
+      "confidence": 0.25,
+      "notes": [
+        "guarded_by_critical",
+        "critical_present"
+      ]
+    },
+    {
+      "file": "D:\\Major Project\\New_Implementation\\datasets\\dataracebench\\micro-benchmarks\\DRB097-target-teams-distribute-orig-no.c",
+      "variable": "sum",
+      "reason": "openmp_shared_write",
+      "pragmas": [
+        "parallel_for",
+        "parallel_for"
+      ],
+      "confidence": 0.1,
+      "notes": [
+        "protected_by_clause"
+      ]
+    },
+    {
+      "file": "D:\\Major Project\\New_Implementation\\datasets\\dataracebench\\micro-benchmarks\\DRB102-copyprivate-orig-no.c",
+      "variable": "x",
+      "reason": "openmp_shared_write",
+      "pragmas": [
+        "parallel"
+      ],
+      "confidence": 0.1,
+      "notes": [
+        "protected_by_clause"
+      ]
+    },
+    {
+      "file": "D:\\Major Project\\New_Implementation\\datasets\\dataracebench\\micro-benchmarks\\DRB102-copyprivate-orig-no.c",
+      "variable": "y",
+      "reason": "openmp_shared_write",
+      "pragmas": [
+        "parallel"
+      ],
+      "confidence": 0.1,
+      "notes": [
+        "protected_by_clause"
+      ]
+    },
+    {
+      "file": "D:\\Major Project\\New_Implementation\\datasets\\dataracebench\\micro-benchmarks\\DRB121-reduction-orig-no.c",
+      "variable": "sum1",
+      "reason": "openmp_shared_write",
+      "pragmas": [
+        "parallel",
+        "for",
+        "for"
+      ],
+      "confidence": 0.1,
+      "notes": [
+        "protected_by_clause"
+      ]
+    },
+    {
+      "file": "D:\\Major Project\\New_Implementation\\datasets\\dataracebench\\micro-benchmarks\\DRB121-reduction-orig-no.c",
+      "variable": "sum2",
+      "reason": "openmp_shared_write",
+      "pragmas": [
+        "parallel",
+        "for",
+        "for"
+      ],
+      "confidence": 0.1,
+      "notes": [
+        "protected_by_clause"
+      ]
+    },
+    {
+      "file": "D:\\Major Project\\New_Implementation\\datasets\\dataracebench\\micro-benchmarks\\DRB121-reduction-orig-no.c",
+      "variable": "var",
+      "reason": "openmp_shared_write",
+      "pragmas": [
+        "parallel",
+        "for",
+        "for"
+      ],
+      "confidence": 0.1,
+      "notes": [
+        "protected_by_clause"
+      ]
+    },
+    {
+      "file": "D:\\Major Project\\New_Implementation\\datasets\\dataracebench\\micro-benchmarks\\DRB126-firstprivatesections-orig-no.c",
+      "variable": "section_count",
+      "reason": "openmp_shared_write",
+      "pragmas": [
+        "parallel"
+      ],
+      "confidence": 0.1,
+      "notes": [
+        "protected_by_clause"
+      ]
+    },
+    {
+      "file": "D:\\Major Project\\New_Implementation\\datasets\\dataracebench\\micro-benchmarks\\DRB140-reduction-barrier-orig-yes.c",
+      "variable": "a",
+      "reason": "openmp_shared_write",
+      "pragmas": [
+        "parallel",
+        "for"
+      ],
+      "confidence": 0.1,
+      "notes": [
+        "protected_by_clause"
+      ]
+    },
+    {
+      "file": "D:\\Major Project\\New_Implementation\\datasets\\dataracebench\\micro-benchmarks\\DRB141-reduction-barrier-orig-no.c",
+      "variable": "a",
+      "reason": "openmp_shared_write",
+      "pragmas": [
+        "parallel",
+        "for"
+      ],
+      "confidence": 0.1,
+      "notes": [
+        "protected_by_clause"
+      ]
+    },
+    {
+      "file": "D:\\Major Project\\New_Implementation\\datasets\\dataracebench\\micro-benchmarks\\DRB142-acquirerelease-orig-yes.c",
+      "variable": "x",
+      "reason": "openmp_shared_write",
+      "pragmas": [
+        "parallel",
+        "critical",
+        "critical"
+      ],
+      "confidence": 0.25,
+      "notes": [
+        "guarded_by_critical",
+        "critical_present"
+      ]
+    },
+    {
+      "file": "D:\\Major Project\\New_Implementation\\datasets\\dataracebench\\micro-benchmarks\\DRB143-acquirerelease-orig-no.c",
+      "variable": "x",
+      "reason": "openmp_shared_write",
+      "pragmas": [
+        "parallel",
+        "critical",
+        "critical"
+      ],
+      "confidence": 0.25,
+      "notes": [
+        "guarded_by_critical",
+        "critical_present"
+      ]
+    },
+    {
+      "file": "D:\\Major Project\\New_Implementation\\datasets\\dataracebench\\micro-benchmarks\\DRB144-critical-missingreduction-orig-gpu-yes.c",
+      "variable": "var",
+      "reason": "openmp_shared_write",
+      "pragmas": [
+        "parallel_for",
+        "critical"
+      ],
+      "confidence": 0.25,
+      "notes": [
+        "guarded_by_critical",
+        "critical_present"
+      ]
+    },
+    {
+      "file": "D:\\Major Project\\New_Implementation\\datasets\\dataracebench\\micro-benchmarks\\DRB145-atomiccritical-orig-gpu-no.c",
+      "variable": "var",
+      "reason": "openmp_shared_write",
+      "pragmas": [
+        "parallel_for"
+      ],
+      "confidence": 0.1,
+      "notes": [
+        "protected_by_clause"
+      ]
+    },
+    {
+      "file": "D:\\Major Project\\New_Implementation\\datasets\\dataracebench\\micro-benchmarks\\DRB148-critical1-orig-gpu-yes.c",
+      "variable": "var",
+      "reason": "openmp_shared_write",
+      "pragmas": [
+        "parallel_for",
+        "critical",
+        "critical"
+      ],
+      "confidence": 0.25,
+      "notes": [
+        "guarded_by_critical",
+        "critical_present"
+      ]
+    },
+    {
+      "file": "D:\\Major Project\\New_Implementation\\datasets\\dataracebench\\micro-benchmarks\\DRB162-nolocksimd-orig-gpu-no.c",
+      "variable": "var",
+      "reason": "openmp_shared_write",
+      "pragmas": [
+        "parallel_for"
+      ],
+      "confidence": 0.1,
+      "notes": [
+        "protected_by_clause"
+      ]
+    },
+    {
+      "file": "D:\\Major Project\\New_Implementation\\datasets\\dataracebench\\micro-benchmarks\\DRB163-simdmissinglock1-orig-gpu-no.c",
+      "variable": "var",
+      "reason": "openmp_shared_write",
+      "pragmas": [
+        "parallel_for"
+      ],
+      "confidence": 0.1,
+      "notes": [
+        "protected_by_clause"
+      ]
+    },
+    {
+      "file": "D:\\Major Project\\New_Implementation\\datasets\\dataracebench\\micro-benchmarks\\DRB170-nestedloops-orig-no.c",
+      "variable": "tmp1",
+      "reason": "openmp_shared_write",
+      "pragmas": [
+        "parallel_for"
+      ],
+      "confidence": 0.1,
+      "notes": [
+        "protected_by_clause"
+      ]
+    },
+    {
+      "file": "D:\\Major Project\\New_Implementation\\datasets\\dataracebench\\micro-benchmarks\\DRB171-threadprivate3-orig-no.c",
+      "variable": "x",
+      "reason": "openmp_shared_write",
+      "pragmas": [
+        "parallel_for"
+      ],
+      "confidence": 0.1,
+      "notes": [
+        "protected_by_clause"
+      ]
+    },
+    {
+      "file": "D:\\Major Project\\New_Implementation\\datasets\\dataracebench\\micro-benchmarks\\DRB181-SmithWaterman-yes.c",
+      "variable": "gapScore",
+      "reason": "openmp_shared_write",
+      "pragmas": [
+        "critical",
+        "parallel",
+        "for"
+      ],
+      "confidence": 0.45,
+      "notes": [
+        "critical_present"
+      ]
+    },
+    {
+      "file": "D:\\Major Project\\New_Implementation\\datasets\\dataracebench\\micro-benchmarks\\DRB181-SmithWaterman-yes.c",
+      "variable": "matchScore",
+      "reason": "openmp_shared_write",
+      "pragmas": [
+        "critical",
+        "parallel",
+        "for"
+      ],
+      "confidence": 0.45,
+      "notes": [
+        "critical_present"
+      ]
+    },
+    {
+      "file": "D:\\Major Project\\New_Implementation\\datasets\\dataracebench\\micro-benchmarks\\DRB181-SmithWaterman-yes.c",
+      "variable": "max",
+      "reason": "openmp_shared_write",
+      "pragmas": [
+        "critical",
+        "parallel",
+        "for"
+      ],
+      "confidence": 0.45,
+      "notes": [
+        "critical_present"
+      ]
+    },
+    {
+      "file": "D:\\Major Project\\New_Implementation\\datasets\\dataracebench\\micro-benchmarks\\DRB181-SmithWaterman-yes.c",
+      "variable": "maxPos",
+      "reason": "openmp_shared_write",
+      "pragmas": [
+        "critical",
+        "parallel",
+        "for"
+      ],
+      "confidence": 0.25,
+      "notes": [
+        "guarded_by_critical"
+      ]
+    },
+    {
+      "file": "D:\\Major Project\\New_Implementation\\datasets\\dataracebench\\micro-benchmarks\\DRB181-SmithWaterman-yes.c",
+      "variable": "missmatchScore",
+      "reason": "openmp_shared_write",
+      "pragmas": [
+        "critical",
+        "parallel",
+        "for"
+      ],
+      "confidence": 0.45,
+      "notes": [
+        "critical_present"
+      ]
+    },
+    {
+      "file": "D:\\Major Project\\New_Implementation\\datasets\\dataracebench\\micro-benchmarks\\DRB181-SmithWaterman-yes.c",
+      "variable": "pred",
+      "reason": "openmp_shared_write",
+      "pragmas": [
+        "critical",
+        "parallel",
+        "for"
+      ],
+      "confidence": 0.45,
+      "notes": [
+        "critical_present"
+      ]
+    },
+    {
+      "file": "D:\\Major Project\\New_Implementation\\datasets\\dataracebench\\micro-benchmarks\\DRB181-SmithWaterman-yes.c",
+      "variable": "up",
+      "reason": "openmp_shared_write",
+      "pragmas": [
+        "critical",
+        "parallel",
+        "for"
+      ],
+      "confidence": 0.45,
+      "notes": [
+        "critical_present"
+      ]
+    },
+    {
+      "file": "D:\\Major Project\\New_Implementation\\datasets\\dataracebench\\micro-benchmarks\\DRB184-barrier1-no.c",
+      "variable": "x",
+      "reason": "openmp_shared_write",
+      "pragmas": [
+        "critical",
+        "critical",
+        "parallel"
+      ],
+      "confidence": 0.45,
+      "notes": [
+        "critical_present"
+      ]
+    },
+    {
+      "file": "D:\\Major Project\\New_Implementation\\datasets\\dataracebench\\micro-benchmarks\\DRB185-barrier1-yes.c",
+      "variable": "x",
+      "reason": "openmp_shared_write",
+      "pragmas": [
+        "critical",
+        "critical",
+        "parallel"
+      ],
+      "confidence": 0.45,
+      "notes": [
+        "critical_present"
+      ]
+    },
+    {
+      "file": "D:\\Major Project\\New_Implementation\\datasets\\dataracebench\\micro-benchmarks\\DRB190-critical-section2-no.c",
+      "variable": "cap",
+      "reason": "openmp_shared_write",
+      "pragmas": [
+        "parallel",
+        "critical",
+        "critical"
+      ],
+      "confidence": 0.25,
+      "notes": [
+        "guarded_by_critical"
+      ]
+    },
+    {
+      "file": "D:\\Major Project\\New_Implementation\\datasets\\dataracebench\\micro-benchmarks\\DRB191-critical-section2-yes.c",
+      "variable": "cap",
+      "reason": "openmp_shared_write",
+      "pragmas": [
+        "parallel",
+        "critical",
+        "critical"
+      ],
+      "confidence": 0.25,
+      "notes": [
+        "guarded_by_critical"
+      ]
+    },
+    {
+      "file": "D:\\Major Project\\New_Implementation\\datasets\\dataracebench\\micro-benchmarks\\DRB192-critical-section3-no.c",
+      "variable": "done",
+      "reason": "openmp_shared_write",
+      "pragmas": [
+        "parallel",
+        "critical",
+        "critical"
+      ],
+      "confidence": 0.25,
+      "notes": [
+        "guarded_by_critical",
+        "critical_present"
+      ]
+    },
+    {
+      "file": "D:\\Major Project\\New_Implementation\\datasets\\dataracebench\\micro-benchmarks\\DRB192-critical-section3-no.c",
+      "variable": "x",
+      "reason": "openmp_shared_write",
+      "pragmas": [
+        "parallel",
+        "critical",
+        "critical"
+      ],
+      "confidence": 0.25,
+      "notes": [
+        "guarded_by_critical"
+      ]
+    },
+    {
+      "file": "D:\\Major Project\\New_Implementation\\datasets\\dataracebench\\micro-benchmarks\\DRB193-critical-section3-yes.c",
+      "variable": "done",
+      "reason": "openmp_shared_write",
+      "pragmas": [
+        "parallel",
+        "critical",
+        "critical"
+      ],
+      "confidence": 0.25,
+      "notes": [
+        "guarded_by_critical",
+        "critical_present"
+      ]
+    },
+    {
+      "file": "D:\\Major Project\\New_Implementation\\datasets\\dataracebench\\micro-benchmarks\\DRB193-critical-section3-yes.c",
+      "variable": "x",
+      "reason": "openmp_shared_write",
+      "pragmas": [
+        "parallel",
+        "critical",
+        "critical"
+      ],
+      "confidence": 0.25,
+      "notes": [
+        "guarded_by_critical"
+      ]
+    },
+    {
+      "file": "D:\\Major Project\\New_Implementation\\datasets\\dataracebench\\micro-benchmarks\\DRB198-prodcons-no.c",
+      "variable": "cap",
+      "reason": "openmp_shared_write",
+      "pragmas": [
+        "parallel_for",
+        "critical",
+        "critical"
+      ],
+      "confidence": 0.25,
+      "notes": [
+        "guarded_by_critical"
+      ]
+    },
+    {
+      "file": "D:\\Major Project\\New_Implementation\\datasets\\dataracebench\\micro-benchmarks\\DRB198-prodcons-no.c",
+      "variable": "nprod",
+      "reason": "openmp_shared_write",
+      "pragmas": [
+        "parallel_for",
+        "critical",
+        "critical"
+      ],
+      "confidence": 0.25,
+      "notes": [
+        "guarded_by_critical"
+      ]
+    },
+    {
+      "file": "D:\\Major Project\\New_Implementation\\datasets\\dataracebench\\micro-benchmarks\\DRB199-prodcons-yes.c",
+      "variable": "cap",
+      "reason": "openmp_shared_write",
+      "pragmas": [
+        "parallel_for",
+        "critical",
+        "critical"
+      ],
+      "confidence": 0.25,
+      "notes": [
+        "guarded_by_critical"
+      ]
+    },
+    {
+      "file": "D:\\Major Project\\New_Implementation\\datasets\\dataracebench\\micro-benchmarks\\DRB199-prodcons-yes.c",
+      "variable": "nprod",
+      "reason": "openmp_shared_write",
+      "pragmas": [
+        "parallel_for",
+        "critical",
+        "critical"
+      ],
+      "confidence": 0.25,
+      "notes": [
+        "guarded_by_critical"
+      ]
+    }
+  ]
+}

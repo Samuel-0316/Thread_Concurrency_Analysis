@@ -1,0 +1,22 @@
+{
+  "summary": {
+    "nodes": 13,
+    "edges": 4,
+    "node_types": {
+      "file": 2,
+      "variable": 4,
+      "thread": 3,
+      "sync": 4
+    },
+    "edge_relations": {
+      "contains": 4
+    },
+    "protected_accesses": 0,
+    "unprotected_accesses": 0,
+    "potential_races": 0
+  },
+  "analysis": {
+    "unprotected_accesses": 0,
+    "concurrent_patterns": 0
+  }
+}

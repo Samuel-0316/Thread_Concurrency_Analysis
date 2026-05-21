@@ -1,0 +1,39 @@
+{
+  "analysis_type": "IR-based comprehensive analysis",
+  "files_analyzed": 2,
+  "ir_statistics": {
+    "variables": 4,
+    "accesses": 4,
+    "threads": 3,
+    "sync_points": 8
+  },
+  "findings": {
+    "data_races": 0,
+    "unprotected_accesses": 0,
+    "lock_order_violations": 0,
+    "openmp_races": 0,
+    "openmp_races_suppressed": 0,
+    "total_findings": 0
+  },
+  "sample_finding": {
+    "type": "ConcurrencyIssue object",
+    "fields": [
+      "issue_id",
+      "issue_type",
+      "accesses",
+      "variable",
+      "severity",
+      "confidence",
+      "reason",
+      "recommendations",
+      "llm_analysis"
+    ],
+    "benefits": [
+      "Full access details (thread_id, access_type, synchronization, omp_clauses)",
+      "Variable metadata (scope, protection_methods, always_protected)",
+      "Thread context (parallelism_model, omp_construct, parent/child)",
+      "Confidence tracking from IR",
+      "Structured for LLM enhancement"
+    ]
+  }
+}

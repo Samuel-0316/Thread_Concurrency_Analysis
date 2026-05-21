@@ -1,0 +1,36 @@
+{
+  "dataset": "DataRaceBench (subset)",
+  "files_analyzed": 10,
+  "ir_statistics": {
+    "variables": 24,
+    "accesses": 24,
+    "threads": 0,
+    "sync_points": 0
+  },
+  "tig_structure": {
+    "nodes": 14,
+    "edges": 24,
+    "node_types": {
+      "file": 10,
+      "variable": 4
+    },
+    "edge_relations": {
+      "contains": 24
+    }
+  },
+  "analysis": {
+    "high_confidence_accesses": 0,
+    "protected_accesses": 0,
+    "unprotected_accesses": 0,
+    "critical_section_accesses": 0,
+    "potential_races": 0,
+    "concurrent_patterns": 0
+  },
+  "benefits": [
+    "Enriched nodes with IR metadata (scope, protection_methods, confidence)",
+    "Enriched edges with access types, synchronization, OpenMP clauses",
+    "Direct race detection from TIG queries",
+    "Type-safe analysis with confidence tracking",
+    "Foundation for better LLM reasoning"
+  ]
+}

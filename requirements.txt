@@ -1,0 +1,5 @@
+tree_sitter
+networkx
+requests
+python-dotenv
+google-generativeai

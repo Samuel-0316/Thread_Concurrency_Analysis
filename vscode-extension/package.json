@@ -1,0 +1,21 @@
+{
+  "name": "concurrency-analyzer",
+  "displayName": "Concurrency Analyzer",
+  "description": "Lightweight VS Code extension to visualize thread-safety findings and concurrency KG.",
+  "version": "0.1.0",
+  "engines": {
+    "vscode": "^1.70.0"
+  },
+  "activationEvents": [
+    "onCommand:concurrencyAnalyzer.open"
+  ],
+  "main": "extension.js",
+  "contributes": {
+    "commands": [
+      {
+        "command": "concurrencyAnalyzer.open",
+        "title": "Concurrency Analyzer: Open Panel"
+      }
+    ]
+  }
+}

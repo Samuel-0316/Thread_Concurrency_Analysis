@@ -1,0 +1,82 @@
+{
+  "reduction": {
+    "name": "Add reduction clause",
+    "description": "Replace shared accumulation with OpenMP reduction clause. This is the most performant fix for simple accumulation patterns (+, -, *, min, max).",
+    "applicable_when": "A shared variable uses a compound assignment (+=, *=, etc.) inside a parallel for loop",
+    "template_c": "#pragma omp parallel for reduction({op}:{var})\nfor (...) {\n    {var} {op}= expr;\n}",
+    "performance_impact": "Best — each thread accumulates locally, merge at barrier",
+    "correctness": "Guaranteed correct for supported operators"
+  },
+  "atomic": {
+    "name": "Add #pragma omp atomic",
+    "description": "Protect a single memory update with an atomic operation. Lighter than critical sections but limited to single statements.",
+    "applicable_when": "A single shared variable is updated with a simple statement (var++, var += expr, var = var op expr)",
+    "template_c": "#pragma omp atomic update\n{var} {op}= {expr};",
+    "performance_impact": "Good — hardware-level atomic, no lock overhead",
+    "correctness": "Correct for single-statement updates only"
+  },
+  "critical": {
+    "name": "Wrap in #pragma omp critical",
+    "description": "Protect the access with a named critical section. Works for any code block but serializes all threads entering the same named section.",
+    "applicable_when": "Complex multi-statement access to shared data, or when atomic/reduction are not applicable",
+    "template_c": "#pragma omp critical(protect_{var})\n{\n    // protected access to {var}\n}",
+    "performance_impact": "Moderate — serializes threads, potential contention",
+    "correctness": "Guaranteed correct for any code block"
+  },
+  "private_clause": {
+    "name": "Add private clause",
+    "description": "Declare the variable as private so each thread gets its own copy. Use for temporary/scratch variables that don't need to be shared.",
+    "applicable_when": "A variable is used as scratch space inside the parallel region and its initial/final values don't matter",
+    "template_c": "#pragma omp parallel for private({var})\nfor (...) {\n    {var} = ...;  // each thread has its own copy\n}",
+    "performance_impact": "Best — no synchronization needed",
+    "correctness": "Correct only if the variable doesn't need cross-thread communication"
+  },
+  "declare_inside_loop": {
+    "name": "Declare variable inside loop body",
+    "description": "Move the variable declaration inside the loop body so it becomes automatically private (stack-local to each thread's iteration).",
+    "applicable_when": "A temporary variable is declared before the loop but only used within the loop body",
+    "template_c": "#pragma omp parallel for\nfor (int i = 0; i < N; i++) {\n    int {var} = ...;  // now private to each iteration\n}",
+    "performance_impact": "Best — no synchronization needed",
+    "correctness": "Correct when variable is only used within iteration"
+  },
+  "barrier": {
+    "name": "Add explicit barrier",
+    "description": "Insert #pragma omp barrier between phases that produce and consume shared data.",
+    "applicable_when": "A parallel region has multiple phases where later phases depend on results from earlier phases",
+    "template_c": "// Phase 1: produce\n#pragma omp barrier\n// Phase 2: consume",
+    "performance_impact": "Moderate — forces synchronization point",
+    "correctness": "Ensures all threads complete phase 1 before any starts phase 2"
+  },
+  "consistent_lock_order": {
+    "name": "Enforce consistent lock ordering",
+    "description": "Always acquire multiple locks in the same global order (e.g., by address or by name). This prevents circular wait deadlocks.",
+    "applicable_when": "Multiple locks are acquired by different threads in different orders",
+    "template_c": "// Always acquire in order: lock_A before lock_B\nomp_set_lock(&lock_A);\nomp_set_lock(&lock_B);\n// ... critical section ...\nomp_unset_lock(&lock_B);\nomp_unset_lock(&lock_A);",
+    "performance_impact": "None — just reordering",
+    "correctness": "Prevents deadlock by eliminating circular wait"
+  },
+  "with_lock": {
+    "name": "Wrap in with lock: (Python)",
+    "description": "Use a context manager to protect shared variable access with a threading.Lock.",
+    "applicable_when": "A shared variable is accessed from multiple Python threads",
+    "template_python": "_lock = threading.Lock()\n\ndef worker():\n    with _lock:\n        shared_var = new_value",
+    "performance_impact": "Moderate — serializes access",
+    "correctness": "Guaranteed correct for any code block"
+  },
+  "remove_nowait": {
+    "name": "Remove nowait clause",
+    "description": "Remove the nowait clause from a worksharing construct whose results are used by subsequent code.",
+    "applicable_when": "A #pragma omp for nowait produces data consumed by subsequent parallel code",
+    "template_c": "#pragma omp for  // removed nowait\nfor (...) { ... }",
+    "performance_impact": "Slight — adds implicit barrier",
+    "correctness": "Ensures all iterations complete before dependent code runs"
+  },
+  "padding": {
+    "name": "Add cache line padding",
+    "description": "Pad shared arrays so each thread's data occupies its own cache line, eliminating false sharing.",
+    "applicable_when": "Performance degradation due to false sharing on adjacent array elements",
+    "template_c": "#define PAD 16  // 64 bytes / sizeof(int)\nint counters[NUM_THREADS * PAD];\n// Access: counters[tid * PAD]",
+    "performance_impact": "Significant improvement for false sharing cases",
+    "correctness": "Does not affect correctness"
+  }
+}

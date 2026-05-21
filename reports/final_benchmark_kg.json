@@ -1,0 +1,74 @@
+{
+  "directed": true,
+  "multigraph": false,
+  "graph": {},
+  "nodes": [
+    {
+      "type": "finding",
+      "confidence": 0.5,
+      "reason": "Potential OpenMP race on shared variable x (high_confidence_accesses)",
+      "id": "D:\\Major Project\\New_Implementation\\datasets\\dataracebench\\micro-benchmarks\\DRB188-barrier3-no.c:x"
+    },
+    {
+      "type": "finding",
+      "confidence": 0.5,
+      "reason": "Potential OpenMP race on shared variable x (high_confidence_accesses)",
+      "id": "D:\\Major Project\\New_Implementation\\datasets\\dataracebench\\micro-benchmarks\\DRB189-barrier3-yes.c:x"
+    },
+    {
+      "type": "finding",
+      "confidence": 0.5,
+      "reason": "Potential OpenMP race on shared variable x (high_confidence_accesses)",
+      "id": "D:\\Major Project\\New_Implementation\\datasets\\dataracebench\\micro-benchmarks\\DRB184-barrier1-no.c:x"
+    },
+    {
+      "type": "finding",
+      "confidence": 0.5,
+      "reason": "Potential OpenMP race on shared variable x (high_confidence_accesses)",
+      "id": "D:\\Major Project\\New_Implementation\\datasets\\dataracebench\\micro-benchmarks\\DRB185-barrier1-yes.c:x"
+    },
+    {
+      "type": "finding",
+      "confidence": 0.5,
+      "reason": "Potential OpenMP race on shared variable var (high_confidence_accesses)",
+      "id": "D:\\Major Project\\New_Implementation\\datasets\\dataracebench\\micro-benchmarks\\DRB147-critical1-orig-gpu-no.c:var"
+    },
+    {
+      "type": "finding",
+      "confidence": 0.5,
+      "reason": "Potential OpenMP race on shared variable x (high_confidence_accesses)",
+      "id": "D:\\Major Project\\New_Implementation\\datasets\\dataracebench\\micro-benchmarks\\DRB182-atomic3-no.c:x"
+    },
+    {
+      "type": "finding",
+      "confidence": 0.5,
+      "reason": "Potential OpenMP race on shared variable done (high_confidence_accesses)",
+      "id": "D:\\Major Project\\New_Implementation\\datasets\\dataracebench\\micro-benchmarks\\DRB182-atomic3-no.c:done"
+    },
+    {
+      "type": "finding",
+      "confidence": 0.5,
+      "reason": "Potential OpenMP race on shared variable a (high_confidence_accesses)",
+      "id": "D:\\Major Project\\New_Implementation\\datasets\\dataracebench\\micro-benchmarks\\DRB108-atomic-orig-no.c:a"
+    },
+    {
+      "type": "finding",
+      "confidence": 0.5,
+      "reason": "Potential OpenMP race on shared variable var (high_confidence_accesses)",
+      "id": "D:\\Major Project\\New_Implementation\\datasets\\dataracebench\\micro-benchmarks\\DRB146-atomicupdate-orig-gpu-no.c:var"
+    },
+    {
+      "type": "finding",
+      "confidence": 0.5,
+      "reason": "Potential OpenMP race on shared variable x (high_confidence_accesses)",
+      "id": "D:\\Major Project\\New_Implementation\\datasets\\dataracebench\\micro-benchmarks\\DRB183-atomic3-yes.c:x"
+    },
+    {
+      "type": "finding",
+      "confidence": 0.5,
+      "reason": "Potential OpenMP race on shared variable done (high_confidence_accesses)",
+      "id": "D:\\Major Project\\New_Implementation\\datasets\\dataracebench\\micro-benchmarks\\DRB183-atomic3-yes.c:done"
+    }
+  ],
+  "edges": []
+}
