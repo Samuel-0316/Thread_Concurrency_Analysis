@@ -396,7 +396,14 @@ function getWebviewContent(scriptUri, styleUri) {
     <!-- Left side: Graph -->
     <div id="graphContainer">
       <div id="graph"></div>
-      
+
+      <!-- Zoom controls (floating overlay) -->
+      <div id="graphControls">
+        <button id="zoomInBtn"  class="graph-ctrl-btn" title="Zoom In">+</button>
+        <button id="zoomOutBtn" class="graph-ctrl-btn" title="Zoom Out">−</button>
+        <button id="zoomFitBtn" class="graph-ctrl-btn" title="Fit to screen" style="font-size:13px;">⊙</button>
+      </div>
+
       <!-- Detail panel (click a node to inspect) -->
       <div id="detailPanel" class="hidden">
         <div id="detailTitle">Details</div>
@@ -425,7 +432,7 @@ function getWebviewContent(scriptUri, styleUri) {
     <div id="problemsList"></div>
   </div>
 
-  <script src="https://unpkg.com/cytoscape@3.21.1/dist/cytoscape.min.js"></script>
+  <script src="https://cdn.jsdelivr.net/npm/d3@7/dist/d3.min.js"></script>
   <script src="${scriptUri}"></script>
 </body>
 </html>`;
